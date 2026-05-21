@@ -55,6 +55,68 @@
       background: #2563eb;
       color: white;
     }
+
+    /* New Chat UI Styling */
+    .chat-box {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: white;
+      padding: 12px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      width: 90%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .chat-input-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .chat-box input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .chat-box input:focus {
+      border-color: #2563eb;
+    }
+
+    .chat-box button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 0 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .chat-box button:hover {
+      background: #1d4ed8;
+    }
+
+    .chat-response {
+      font-size: 13px;
+      color: #334155;
+      max-height: 80px;
+      overflow-y: auto;
+      line-height: 1.4;
+    }
+    
+    .chat-response:empty {
+      display: none;
+    }
   </style>
 </head>
 
@@ -65,6 +127,15 @@
   <div class="toggle">
     <button id="carBtn" class="active">🚗 Car</button>
     <button id="busBtn">🚌 Bus</button>
+  </div>
+
+  <!-- New Chat UI Element -->
+  <div class="chat-box">
+    <div id="chatResponse" class="chat-response"></div>
+    <div class="chat-input-row">
+      <input type="text" id="chatInput" placeholder="Trova informazioni sul tuo interesse">
+      <button id="chatBtn">Send</button>
+    </div>
   </div>
 
   <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
@@ -81,14 +152,70 @@
     let parkingMarkers = [];
     let mode = "car";
     let currentEvent = null;
+    let globalFeatures = []; // Stash map features globally so our search input can query them
 
     const statusBox = document.getElementById("status");
-
     const carBtn = document.getElementById("carBtn");
     const busBtn = document.getElementById("busBtn");
 
+    // Chat UI Elements
+    const chatInput = document.getElementById("chatInput");
+    const chatBtn = document.getElementById("chatBtn");
+    const chatResponse = document.getElementById("chatResponse");
+
     carBtn.onclick = () => setMode("car");
     busBtn.onclick = () => setMode("bus");
+
+    // Chat Form Event Listeners
+    chatBtn.onclick = handleChatSubmit;
+    chatInput.onkeydown = (e) => {
+      if (e.key === "Enter") handleChatSubmit();
+    };
+
+    async function handleChatSubmit() {
+      const question = chatInput.value.trim();
+      if (!question) return;
+
+      chatResponse.innerText = "Thinking...";
+      chatBtn.disabled = true;
+
+      try {
+        const res = await fetch("http://127.0.0.1:5001/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question })
+        });
+
+        if (!res.ok) throw new Error("Server error");
+        const data = await res.json();
+
+        if (data && typeof data.response === "object" && data.response.id) {
+          // Found an event object pattern
+          chatResponse.innerText = data.response.context || "Event found!";
+          selectEventById(data.response.id);
+        } else if (data && typeof data.response === "string") {
+          // Plain text fallback or nothing found string
+          chatResponse.innerText = data.response;
+        } else {
+          chatResponse.innerText = "Nessuna risposta.";
+        }
+      } catch (err) {
+        chatResponse.innerText = "Error connecting to the chat assistant.";
+        console.error(err);
+      } finally {
+        chatBtn.disabled = false;
+      }
+    }
+
+    // Match the target ID up against all loaded features and trigger a synthetic click
+    function selectEventById(id) {
+      const targetFeature = globalFeatures.find(f => String(f.properties.id) === String(id));
+      if (targetFeature) {
+        onEventClick(targetFeature);
+      } else {
+        setStatus(`Event ID ${id} parsed, but not found on the map layers.`);
+      }
+    }
 
     function setMode(nextMode) {
       mode = nextMode;
@@ -480,11 +607,12 @@
       map.on("load", async () => {
         const res = await fetch("/api/map_data");
         const data = await res.json();
+        globalFeatures = data.features || []; // Retain references
 
         const id = getEventIdFromUrl();
         let initial = null;
 
-        data.features.forEach(f => {
+        globalFeatures.forEach(f => {
           const [lon, lat] = f.geometry.coordinates;
 
           const m = new mapboxgl.Marker({ color: "#e11d48" })
@@ -526,11 +654,12 @@
 
       const res = await fetch("/api/map_data");
       const data = await res.json();
+      globalFeatures = data.features || []; // Retain references
 
       const id = getEventIdFromUrl();
       let initial = null;
 
-      data.features.forEach(f => {
+      globalFeatures.forEach(f => {
         const [lon, lat] = f.geometry.coordinates;
 
         const m = L.circleMarker([lat, lon], {

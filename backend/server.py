@@ -1,11 +1,21 @@
 from flask import Flask, request, jsonify
 
 from app import TrentoLogisticsAssistant
+from flask_cors import CORS
+
+""" @app.route("/api/data")
+def get_data():
+    return jsonify({"message": "Hello from Flask with CORS fixed!"})
+
+if __name__ == "__main__":
+    app.run(debug=True) """
 
 # -----------------------------
 # INIT APP + MODEL
 # -----------------------------
 app = Flask(__name__)
+
+CORS(app)
 
 # Inizializza UNA SOLA VOLTA all'avvio server
 assistant = TrentoLogisticsAssistant(
@@ -56,7 +66,7 @@ def shutdown(exception=None):
 if __name__ == "__main__":
     app.run(
         host="0.0.0.0",
-        port=5000,
+        port=5001,
         debug=True,
         use_reloader=False  
     )

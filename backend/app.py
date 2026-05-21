@@ -332,14 +332,14 @@ Risposta:"""
 if __name__ == "__main__":
     assistant = TrentoLogisticsAssistant(qdrant_path="./qdrant_data")
 
-    """ Esegui una sola volta quando devi popolare il DB
-    assistant.load_all_data(
+    """ Esegui una sola volta quando devi popolare il DB """
+    """ assistant.load_all_data(
         DataPaths(
             events_json=Path("eventi_trento_puliti.json"),
             parking_json=Path("../trento_parking.json"),
             stops_json=Path("../trento_stops.json"),
         )
-    )"""
+    ) """
 
     # Da qui in poi, in produzione, chiami solo:
     risposta = assistant.ask("cerco un museo da visitare questo weekend con parcheggio nelle vicinanze")
