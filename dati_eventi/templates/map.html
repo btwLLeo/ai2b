@@ -23,7 +23,7 @@
     .status-box {
       position: fixed;
       top: 12px;
-      left: 12px;
+      left: 3rem;
       z-index: 1000;
       background: white;
       padding: 10px;
@@ -80,6 +80,7 @@
     let routeLine = null;
     let parkingMarkers = [];
     let mode = "car";
+    let currentEvent = null;
 
     const statusBox = document.getElementById("status");
 
@@ -91,10 +92,18 @@
 
     function setMode(nextMode) {
       mode = nextMode;
+
       carBtn.classList.toggle("active", mode === "car");
       busBtn.classList.toggle("active", mode === "bus");
+
       clearAll();
+
       setStatus(`Mode: ${mode.toUpperCase()}`);
+
+      // 🔥 AUTO-RELOAD CURRENT CONTEXT
+      if (currentEvent) {
+        onEventClick(currentEvent);
+      }
     }
 
     function getEventIdFromUrl() {
@@ -413,7 +422,7 @@
         drawRoute(best.geometry);
       }
 
-      setStatus(`Closest parking: ${Math.round(best.distance)} m driving (${valid.length} checked)`);
+      setStatus(`Closest parking: ${Math.round(best.distance)} m walking (${valid.length} checked)`);
     }
 
     function onMapClick() {
@@ -438,6 +447,8 @@
     }
 
     async function onEventClick(feature) {
+      currentEvent = feature;
+
       const [lon, lat] = feature.geometry.coordinates;
       setEventIdInUrl(feature.properties.id);
 
@@ -549,6 +560,7 @@
     if (!initMapbox()) {
       initLeaflet();
     }
+
   </script>
 </body>
 </html>

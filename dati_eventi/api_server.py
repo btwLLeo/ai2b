@@ -141,7 +141,7 @@ def nearby_parking():
     try:
         lat = float(request.args.get("lat"))
         lon = float(request.args.get("lon"))
-        radius = float(request.args.get("radius", 2500))
+        radius = float(request.args.get("radius", 200))
 
         results = []
 
