@@ -42,28 +42,66 @@ for col in collections:
 
 print("✅ Database e indici geografici inizializzati con successo.\n")
 
-# --- POPOLAMENTO DATI DI ESEMPIO CON VERI EMBEDDING ---
+import json
 
-museo_lat, museo_lon = 46.020998, 11.126958
+def carica_eventi_reali(file_json="eventi.json"):
 
-# Testo che vogliamo che l'LLM "capisca" quando l'utente fa una ricerca
-testo_evento = "Attività al Museo dell'aeronautica Gianni Caproni. Utilizzo dei simulatori di volo e visita guidata."
+    print("Inizio caricamento degli eventi reali da JSON...")
+    """
+    Legge il JSON reale degli eventi, calcola gli embedding e li carica su Qdrant.
+    """
+    print(f"Lettura del file eventi ({file_json}) in corso...")
+    with open(file_json, "r", encoding="utf-8") as f:
+        dati_eventi = json.load(f)
 
-client.upsert(
-    collection_name="events_collection",
-    points=[
-        PointStruct(
-            id=3651,
-            # 4. Calcoliamo l'embedding passando il testo alla nostra funzione
-            vector=get_real_embedding(testo_evento),
-            payload={
-                "title": "Attività al Museo dell'aeronautica Gianni Caproni",
-                "text_to_embed": testo_evento,
-                "location": {"lat": museo_lat, "lon": museo_lon},
-            },
+    points = []
+    
+    for evento in dati_eventi:
+        # 1. Estraiamo il testo da vettorizzare (contiene già titolo, descr, ecc.)
+        testo_da_vettorizzare = evento["text_to_embed"]
+        
+        # 2. Calcoliamo l'embedding
+        vettore = get_real_embedding(testo_da_vettorizzare)
+        
+        # 3. Estraiamo le coordinate dal formato del tuo JSON
+        lat = evento["metadata"]["location"]["latitude"]
+        lon = evento["metadata"]["location"]["longitude"]
+        
+        # 4. Prepariamo il payload (salviamo anche altri dati utili per l'LLM)
+        payload = {
+            "title": evento["title"],
+            "text_to_embed": testo_da_vettorizzare,
+            "location": {"lat": lat, "lon": lon}, # Formato richiesto dall'indice geo di Qdrant
+            "location_name": evento["metadata"]["location"]["name"],
+            "url": evento["metadata"].get("url", ""),
+            "schedule": evento["metadata"]["schedule"]["text_summary"]
+        }
+        
+        # 5. Creiamo il punto Qdrant
+        points.append(
+            PointStruct(
+                id=evento["id"],
+                vector=vettore,
+                payload=payload
+            )
         )
-    ],
-)
+
+    # 6. Caricamento a blocchi (batch processing)
+    batch_size = 50
+    print(f"Inizio caricamento di {len(points)} eventi su Qdrant...")
+    
+    for i in range(0, len(points), batch_size):
+        batch = points[i : i + batch_size]
+        client.upsert(
+            collection_name="events_collection",
+            points=batch
+        )
+        print(f" -> Caricati {i + len(batch)} / {len(points)} eventi")
+        
+    print("✅ Tutti gli eventi reali caricati con successo!\n")
+
+# Chiamata alla funzione (assicurati che il percorso del file sia corretto)
+carica_eventi_reali("eventi_trento_puliti.json")
 
 import json
 
@@ -279,4 +317,105 @@ def hybrid_geospatial_retrieval(event_id, radius_meters=3000):
     for t in nearby_transit:
         print(f" - {t.payload['name']}")
 
-hybrid_geospatial_retrieval(event_id=3651, radius_meters=3000)
+def get_logistics_context(event_id, radius_meters=500):
+    """
+    Recupera l'evento e restituisce una stringa formattata con i servizi vicini
+    da passare all'LLM.
+    """
+    # 1. Recupero Evento
+    event_record = client.retrieve(
+        collection_name="events_collection", ids=[event_id]
+    )[0]
+    coords = event_record.payload["location"]
+    
+    # 2. Ricerca Parcheggi (limitiamo a 3 per non confondere l'LLM)
+    nearby_parking = client.scroll(
+        collection_name="parking_collection",
+        scroll_filter=Filter(must=[
+            FieldCondition(key="location", geo_radius=GeoRadius(center=coords, radius=radius_meters))
+        ]),
+        limit=3,
+        with_payload=True,
+    )[0]
+
+    # 3. Ricerca Bus (limitiamo a 3)
+    nearby_transit = client.scroll(
+        collection_name="transit_collection",
+        scroll_filter=Filter(must=[
+            FieldCondition(key="location", geo_radius=GeoRadius(center=coords, radius=radius_meters))
+        ]),
+        limit=3,
+        with_payload=True,
+    )[0]
+
+    # 4. Formattazione del Contesto Testuale per l'LLM
+    context_str = f"EVENTO TROVATO:\n- Titolo: {event_record.payload['title']}\n- Dettagli: {event_record.payload['text_to_embed']}\n\n"
+    
+    context_str += "PARCHEGGI NELLE VICINANZE (Max 500m):\n"
+    if nearby_parking:
+        for p in nearby_parking:
+            context_str += f"- {p.payload['raw_text']}\n"
+    else:
+        context_str += "- Nessun parcheggio mappato nelle immediate vicinanze.\n"
+
+    context_str += "\nFERMATE AUTOBUS NELLE VICINANZE (Max 500m):\n"
+    if nearby_transit:
+        for t in nearby_transit:
+            context_str += f"- {t.payload['raw_text']}\n"
+    else:
+        context_str += "- Nessuna fermata mappata nelle immediate vicinanze.\n"
+
+    return context_str
+
+def gestisci_richiesta_utente(user_prompt: str):
+    print(f"\n🗣️ Utente chiede: '{user_prompt}'")
+    print("🔍 Sto cercando l'evento e la logistica...")
+
+    # 1. Convertiamo la domanda in Vettore
+    query_vector = get_real_embedding(user_prompt)
+
+    # 2. Ricerca Semantica: Trova l'evento più pertinente (Nuova API)
+    risposta_qdrant = client.query_points(
+        collection_name="events_collection",
+        query=query_vector,
+        limit=1
+    )
+    
+    search_results = risposta_qdrant.points
+
+    if not search_results:
+        return "Non ho trovato eventi pertinenti a questa richiesta."
+
+    top_event = search_results[0]
+    event_id = top_event.id
+    
+    # top_event.score contiene la % di similitudine (da 0 a 1)
+    if top_event.score < 0.2:
+        return "Mi spiace, non ci sono eventi a Trento che corrispondono esattamente alla tua richiesta in questo momento."
+
+    # 3. Estraiamo il contesto logistico (GeoRadius Search)
+    context_testuale = get_logistics_context(event_id=event_id, radius_meters=500)
+
+    # 4. INGEGNERIA DEL PROMPT: Costruiamo il messaggio per l'LLM
+    system_prompt = f"""Sei un assistente turistico e logistico virtuale per la città di Trento.
+Il tuo compito è rispondere alla domanda dell'utente in modo colloquiale, gentile e molto pratico.
+
+REGOLA 1: Usa SOLO le informazioni fornite nel CONTESTO qui sotto. Non inventare eventi o parcheggi che non esistono.
+REGOLA 2: Rispondi prima alla richiesta sull'evento, poi aggiungi autonomamente le informazioni utili su parcheggi e mezzi pubblici per raggiungerlo.
+
+--- INIZIO CONTESTO RECUPERATO DAL DATABASE ---
+{context_testuale}
+--- FINE CONTESTO ---
+
+Domanda dell'utente: {user_prompt}
+Risposta:"""
+
+    return system_prompt
+
+# --- TESTIAMO IL SISTEMA ---
+domanda = "Posso morire?"
+prompt_finale = gestisci_richiesta_utente(domanda)
+
+print("\n================== PROMPT PER LLM ==================")
+print(prompt_finale)
+print("====================================================")
