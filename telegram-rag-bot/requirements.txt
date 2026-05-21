@@ -1,0 +1,21 @@
+# Core
+python-telegram-bot==21.*
+anthropic>=0.25.0
+
+# Embeddings (pick one)
+openai>=1.0.0          # for text-embedding-3-small / ada-002
+# sentence-transformers  # for local HuggingFace models
+
+# Vector stores (uncomment your choice)
+# faiss-cpu             # Meta FAISS — fast, local, no server needed
+# chromadb              # Chroma — local or hosted
+# pinecone-client       # Pinecone — managed cloud
+# weaviate-client       # Weaviate — open-source / cloud
+
+# Document loaders (optional helpers)
+# pypdf                 # PDF parsing
+# python-docx           # Word document parsing
+# beautifulsoup4        # HTML scraping
+
+# Utilities
+python-dotenv>=1.0.0
