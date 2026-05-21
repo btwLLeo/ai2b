@@ -13,10 +13,11 @@ from core.api_client import APIClient
 logger = logging.getLogger(__name__)
 
 # Single pipeline instance shared across handlers (initialised lazily)
-_pipeline: RAGPipeline | None = None
-_api_client: APIClient | None = None
+""" _pipeline: RAGPipeline | None = None """
+# _api_client: APIClient | None = None
+_api_client: APIClient
 
-
+""" 
 def get_pipeline() -> RAGPipeline:
     global _pipeline
     if _pipeline is None:
@@ -26,14 +27,18 @@ def get_pipeline() -> RAGPipeline:
             _pipeline.load_index()   # load pre-built index
         except Exception:
             logger.warning("Could not load index — run build_index() first.")
-    return _pipeline
+    return _pipeline """
 
 
 def get_api_client() -> APIClient:
     global _api_client
-    if _api_client is None:
+
+    cfg = Config()
+    _api_client = APIClient(base_url=cfg.API_BASE_URL)
+    """ if _api_client is None:
+        print("HEYEEEE")
         cfg = Config()
-        _api_client = APIClient(base_url=cfg.API_BASE_URL)
+        _api_client = APIClient(base_url=cfg.API_BASE_URL) """
     return _api_client
 
 
