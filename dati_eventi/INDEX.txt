@@ -1,0 +1,208 @@
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                                                                           ║
+║        ✅ HYBRID GEOSPATIAL RETRIEVAL API - COMPLETE SETUP ✅            ║
+║                                                                           ║
+║                         Ready to Use with curl!                          ║
+║                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+🎯 WHAT'S BEEN DONE:
+═══════════════════════════════════════════════════════════════════════════
+
+✅ Created Flask REST API server (api_server.py)
+✅ Added health check endpoint
+✅ Added hybrid_geospatial_retrieval endpoint  
+✅ Created Windows launcher (START_API.bat)
+✅ Created test suite (test_api.py)
+✅ Pre-loaded with Trento event data
+✅ Fully documented with 4 guides
+✅ Ready for curl requests
+
+
+🚀 GET STARTED IN 2 MINUTES:
+═══════════════════════════════════════════════════════════════════════════
+
+1️⃣  CLICK TO START SERVER:
+    📂 Open: c:\Users\matta\Desktop\dati_eventi\
+    🖱️  Double-click: START_API.bat
+    ✅ Wait for: "Running on http://127.0.0.1:5000"
+
+2️⃣  OPEN NEW TERMINAL, RUN:
+    curl http://127.0.0.1:5000/api/hybrid_geospatial_retrieval
+
+3️⃣  GET JSON RESPONSE! 🎉
+
+
+📚 DOCUMENTATION FILES:
+═══════════════════════════════════════════════════════════════════════════
+
+Pick what fits your style:
+
+📖 VISUAL_GUIDE.txt          ← Visual diagrams (START HERE!)
+📖 SETUP_COMPLETE.md         ← Complete setup guide
+📖 QUICK_START.txt           ← Quick command reference  
+📖 README.md                 ← Full technical docs
+📖 CURL_EXAMPLES.bat         ← Copy-paste curl commands
+
+
+🔧 LAUNCHER/SERVER FILES:
+═══════════════════════════════════════════════════════════════════════════
+
+🌟 START_API.bat             ← MAIN LAUNCHER (double-click to start)
+🐍 api_server.py             ← The REST API server
+🐍 run_server.py             ← Python launcher
+🧪 test_api.py               ← Automated test suite
+📋 CURL_EXAMPLES.bat         ← Copy-paste curl commands
+
+
+📊 AVAILABLE API ENDPOINTS:
+═══════════════════════════════════════════════════════════════════════════
+
+1. GET /api/health
+   └─ Health check
+   └─ curl http://127.0.0.1:5000/api/health
+
+2. GET /api/hybrid_geospatial_retrieval
+   ├─ Parameters:
+   │  ├─ event_id (default: 3651)
+   │  └─ radius_meters (default: 500)
+   ├─ Examples:
+   │  ├─ curl http://127.0.0.1:5000/api/hybrid_geospatial_retrieval
+   │  ├─ curl "...?radius_meters=1000"
+   │  └─ curl "...?event_id=3651&radius_meters=1000"
+   └─ Returns: JSON with event details, parking, transit
+
+
+✨ KEY FEATURES:
+═══════════════════════════════════════════════════════════════════════════
+
+✅ RESTful API - Standard HTTP GET requests
+✅ JSON Response - Easy to parse
+✅ Query Parameters - Customize search
+✅ Error Handling - Proper HTTP status codes
+✅ Health Check - Monitor API status
+✅ Auto Dependencies - Installs Flask if needed
+✅ Pre-loaded Data - Trento events ready to go
+✅ Cross-platform - Windows/Mac/Linux
+
+
+🎓 QUICK EXAMPLES:
+═══════════════════════════════════════════════════════════════════════════
+
+Basic request:
+    curl http://127.0.0.1:5000/api/hybrid_geospatial_retrieval
+
+With custom radius:
+    curl "http://127.0.0.1:5000/api/hybrid_geospatial_retrieval?radius_meters=1000"
+
+Pretty print JSON (Windows CMD):
+    curl http://127.0.0.1:5000/api/hybrid_geospatial_retrieval | python -m json.tool
+
+Save to file:
+    curl http://127.0.0.1:5000/api/hybrid_geospatial_retrieval > output.json
+
+Run tests:
+    python test_api.py
+
+
+🎯 RESPONSE EXAMPLE:
+═══════════════════════════════════════════════════════════════════════════
+
+{
+  "event": {
+    "id": 3651,
+    "title": "Attività al Museo dell'aeronautica Gianni Caproni",
+    "location": {"lat": 46.020998, "lon": 11.126958}
+  },
+  "radius_meters": 500,
+  "parking": [
+    {
+      "name": "Parcheggio Museo Caproni (Vicinissimo)",
+      "stalli": 50,
+      "location": {"lat": 46.0215, "lon": 11.1272}
+    }
+  ],
+  "transit": [
+    {
+      "stop_name": "Fermata Mattarello / Museo Caproni",
+      "lines": ["7", "A"],
+      "location": {"lat": 46.0220, "lon": 11.1260}
+    }
+  ]
+}
+
+
+⚠️  BEFORE YOU START:
+═══════════════════════════════════════════════════════════════════════════
+
+Requirements:
+  ✅ Python 3.6+ installed
+  ✅ pip available
+  ✅ curl available (usually pre-installed on Windows 10+)
+
+These will be installed automatically:
+  ✅ Flask (web framework)
+  ✅ Qdrant-client (vector database)
+  ✅ NumPy (numerical computing)
+
+
+❓ NEED HELP?
+═══════════════════════════════════════════════════════════════════════════
+
+Read the appropriate guide:
+  📖 Started? → Read VISUAL_GUIDE.txt
+  📖 Quick? → Read QUICK_START.txt
+  📖 Detailed? → Read README.md
+  📖 Complete? → Read SETUP_COMPLETE.md
+
+
+🐛 TROUBLESHOOTING:
+═══════════════════════════════════════════════════════════════════════════
+
+Problem: "Connection refused"
+  → Make sure START_API.bat is running in another window
+
+Problem: "curl: command not found"
+  → Update Windows 10/11 or install curl separately
+
+Problem: "Flask not found"
+  → Run: pip install flask
+
+Problem: "Port 5000 in use"
+  → Edit api_server.py, change port=5000 to port=5001
+
+
+🔗 INTEGRATION:
+═══════════════════════════════════════════════════════════════════════════
+
+Easy to integrate into:
+  ✅ Web applications (JavaScript)
+  ✅ Mobile apps (API calls)
+  ✅ Python scripts (requests library)
+  ✅ Command-line tools (curl)
+  ✅ CI/CD pipelines
+  ✅ Bash/PowerShell scripts
+
+
+📝 NEXT STEPS:
+═══════════════════════════════════════════════════════════════════════════
+
+1. ✅ Read VISUAL_GUIDE.txt (2 min read)
+2. ✅ Double-click START_API.bat
+3. ✅ Wait for "Running on http://127.0.0.1:5000"
+4. ✅ Open new terminal
+5. ✅ Run: curl http://127.0.0.1:5000/api/health
+6. ✅ Run: curl http://127.0.0.1:5000/api/hybrid_geospatial_retrieval
+7. ✅ You're done! 🎉
+
+
+═══════════════════════════════════════════════════════════════════════════
+
+                            YOU'RE ALL SET!
+        
+        Your hybrid_geospatial_retrieval function is now a REST API
+        that responds to curl requests and returns JSON data.
+
+                  👉 Start with: START_API.bat 👈
+
+═══════════════════════════════════════════════════════════════════════════

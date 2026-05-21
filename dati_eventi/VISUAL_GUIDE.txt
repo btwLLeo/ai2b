@@ -1,0 +1,154 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║          HYBRID GEOSPATIAL RETRIEVAL API - VISUAL QUICK GUIDE              ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+📋 WHAT YOU HAVE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Your Python function `hybrid_geospatial_retrieval()` is now a REST API!
+
+┌─────────────────────────────────────────────────────────────────────┐
+│  Before:  python qdrant.py                                           │
+│  After:   curl http://127.0.0.1:5000/api/hybrid_geospatial_retrieval │
+└─────────────────────────────────────────────────────────────────────┘
+
+
+🎯 START HERE (3 SIMPLE STEPS):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1️⃣  LAUNCH SERVER
+   📁 Go to: c:\Users\matta\Desktop\dati_eventi\
+   🖱️  Double-click: START_API.bat
+   ✅ Wait for: "Running on http://127.0.0.1:5000"
+
+Step 2️⃣  OPEN ANOTHER TERMINAL
+   💻 New CMD / PowerShell / Terminal window
+
+Step 3️⃣  MAKE A REQUEST
+   📝 Type one of these commands:
+
+   🟢 Health Check:
+      curl http://127.0.0.1:5000/api/health
+
+   🟢 Get Parking & Transit (500m):
+      curl http://127.0.0.1:5000/api/hybrid_geospatial_retrieval
+
+   🟢 Get Parking & Transit (1000m):
+      curl "http://127.0.0.1:5000/api/hybrid_geospatial_retrieval?radius_meters=1000"
+
+
+📊 WHAT YOU'LL GET:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Response from: /api/hybrid_geospatial_retrieval
+
+{
+  "event": {
+    "id": 3651,
+    "title": "Attività al Museo dell'aeronautica Gianni Caproni",
+    "location": {
+      "lat": 46.020998,
+      "lon": 11.126958
+    }
+  },
+  "radius_meters": 500,
+  "parking": [
+    {
+      "name": "Parcheggio Museo Caproni (Vicinissimo)",
+      "stalli": 50,
+      "location": {"lat": 46.0215, "lon": 11.1272}
+    }
+  ],
+  "transit": [
+    {
+      "stop_name": "Fermata Mattarello / Museo Caproni",
+      "lines": ["7", "A"],
+      "location": {"lat": 46.0220, "lon": 11.1260}
+    }
+  ]
+}
+
+
+🔗 API ENDPOINTS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+╔════════════════════════════════════════════════════════════════════╗
+║ GET /api/health                                                    ║
+├────────────────────────────────────────────────────────────────────┤
+║ Check if API is running                                            ║
+║ curl http://127.0.0.1:5000/api/health                             ║
+╚════════════════════════════════════════════════════════════════════╝
+
+╔════════════════════════════════════════════════════════════════════╗
+║ GET /api/hybrid_geospatial_retrieval                               ║
+├────────────────────────────────────────────────────────────────────┤
+║ Parameters (optional):                                             ║
+║   - event_id: Which event (default: 3651)                         ║
+║   - radius_meters: Search radius (default: 500)                   ║
+║                                                                    ║
+║ Examples:                                                          ║
+║   curl "http://127.0.0.1:5000/api/hybrid_geospatial_retrieval"   ║
+║   curl "...?event_id=3651&radius_meters=1000"                     ║
+║   curl "...?radius_meters=2000"                                   ║
+╚════════════════════════════════════════════════════════════════════╝
+
+
+💡 USEFUL COMMANDS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Pretty print JSON (Windows CMD):
+   curl http://127.0.0.1:5000/api/hybrid_geospatial_retrieval | python -m json.tool
+
+Save to file:
+   curl http://127.0.0.1:5000/api/hybrid_geospatial_retrieval > output.json
+
+Test entire API:
+   python test_api.py
+
+Run server manually:
+   python run_server.py
+
+
+📁 FILES CREATED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌟 START_API.bat              ← Click this to start (Windows)
+📄 api_server.py              ← The API itself
+🐍 run_server.py              ← Python launcher
+🧪 test_api.py                ← Run tests
+📖 README.md                   ← Full docs
+📋 QUICK_START.txt             ← Command reference
+📊 SETUP_COMPLETE.md           ← Complete guide
+
+
+⚠️  TROUBLESHOOTING:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❌ "curl: (7) Failed to connect"
+   → Make sure START_API.bat is running in another window
+
+❌ "No such file or directory"
+   → Make sure you're in c:\Users\matta\Desktop\dati_eventi\
+
+❌ "Flask not found"
+   → Run: pip install flask
+
+❌ "Port 5000 already in use"
+   → Edit api_server.py line 147, change 5000 to 5001
+
+
+✅ VERIFICATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Run this in terminal to confirm everything works:
+
+   1. START SERVER:  START_API.bat
+   2. NEW TERMINAL:  curl http://127.0.0.1:5000/api/health
+   3. SHOULD SEE:    {"status": "ok", "message": "API is running"}
+
+That's it! You're ready to go! 🎉
+
+
+═══════════════════════════════════════════════════════════════════════════════
+For more details, read: README.md or SETUP_COMPLETE.md
+═══════════════════════════════════════════════════════════════════════════════

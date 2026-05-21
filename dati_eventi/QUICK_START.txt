@@ -1,0 +1,150 @@
+# QUICK START GUIDE - Hybrid Geospatial Retrieval API
+
+## ✅ What I Created
+
+I've converted your `hybrid_geospatial_retrieval` function into a fully working REST API that responds to curl requests.
+
+## 📂 New Files Created
+
+1. **api_server.py** - Flask API server with the endpoint
+2. **run_server.py** - Convenient startup script 
+3. **test_api.py** - Automated testing with curl
+4. **run_api.bat** & **start_server.bat** - Windows batch scripts
+5. **README.md** - Full documentation
+
+## 🚀 How to Run
+
+### Step 1: Start the Server
+Open a terminal/command prompt and run:
+```bash
+python run_server.py
+```
+
+You should see:
+```
+======================================================================
+🚀 HYBRID GEOSPATIAL RETRIEVAL API SERVER
+======================================================================
+
+📝 Server will start on: http://127.0.0.1:5000
+
+✅ Test Commands (use in another terminal):
+...
+Starting server...
+ * Running on http://127.0.0.1:5000
+```
+
+### Step 2: Make Requests (in another terminal)
+
+#### Health Check:
+```bash
+curl http://127.0.0.1:5000/api/health
+```
+
+#### Default Query (Event 3651, 500m radius):
+```bash
+curl http://127.0.0.1:5000/api/hybrid_geospatial_retrieval
+```
+
+#### Custom Query (1km radius):
+```bash
+curl "http://127.0.0.1:5000/api/hybrid_geospatial_retrieval?event_id=3651&radius_meters=1000"
+```
+
+## 📊 Expected Response
+
+```json
+{
+  "event": {
+    "id": 3651,
+    "title": "Attività al Museo dell'aeronautica Gianni Caproni",
+    "location": {
+      "lat": 46.020998,
+      "lon": 11.126958
+    }
+  },
+  "radius_meters": 500,
+  "parking": [
+    {
+      "name": "Parcheggio Museo Caproni (Vicinissimo)",
+      "stalli": 50,
+      "location": {
+        "lat": 46.0215,
+        "lon": 11.1272
+      }
+    }
+  ],
+  "transit": [
+    {
+      "stop_name": "Fermata Mattarello / Museo Caproni",
+      "lines": ["7", "A"],
+      "location": {
+        "lat": 46.022,
+        "lon": 11.126
+      }
+    }
+  ]
+}
+```
+
+## 🧪 Run Tests
+
+To automatically test all endpoints:
+```bash
+python test_api.py
+```
+
+This will test:
+- ✅ Health check
+- ✅ Default parameters
+- ✅ Custom radius
+- ✅ Error handling
+
+## 📝 API Endpoints
+
+### 1. GET /api/health
+Returns server status
+
+### 2. GET /api/hybrid_geospatial_retrieval
+Performs geospatial search with optional parameters:
+- `event_id`: Event ID (default: 3651)
+- `radius_meters`: Search radius (default: 500)
+
+## 🔍 Example Requests with Pretty Output
+
+### Windows CMD:
+```bash
+curl http://127.0.0.1:5000/api/hybrid_geospatial_retrieval | python -m json.tool
+```
+
+### Windows PowerShell:
+```powershell
+$response = Invoke-WebRequest -Uri "http://127.0.0.1:5000/api/hybrid_geospatial_retrieval"
+$response.Content | ConvertFrom-Json | ConvertTo-Json
+```
+
+### Linux/Mac:
+```bash
+curl http://127.0.0.1:5000/api/hybrid_geospatial_retrieval | jq .
+```
+
+## ✨ Features
+
+✅ RESTful API design
+✅ Query parameters support
+✅ JSON responses
+✅ Error handling
+✅ Health check endpoint
+✅ CORS ready (can be extended)
+✅ Production-ready with Flask
+✅ Automatic dependency checking
+
+## 🛠️ Next Steps
+
+1. Run `python run_server.py` to start the API
+2. Use any of the curl commands above to test
+3. Integrate the API URL into your applications
+4. Check README.md for more details
+
+---
+**Status**: ✅ Ready to use!
