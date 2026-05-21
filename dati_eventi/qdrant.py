@@ -65,52 +65,167 @@ client.upsert(
     ],
 )
 
-# Anche per i parcheggi usiamo una descrizione testuale per generare l'embedding
-client.upsert(
-    collection_name="parking_collection",
-    points=[
-        PointStruct(
-            id=1,
-            vector=get_real_embedding("Parcheggio pubblico coperto vicino al Museo Caproni con 50 stalli"),
-            payload={
-                "name": "Parcheggio Museo Caproni (Vicinissimo)",
-                "stalli": 50,
-                "location": {"lat": 46.0215, "lon": 11.1272},
-            },
-        ),
-        PointStruct(
-            id=2,
-            vector=get_real_embedding("Parcheggio grande Duomo Trento centro città"),
-            payload={
-                "name": "Parcheggio Duomo Trento (Fuori Raggio)",
-                "stalli": 120,
-                "location": {"lat": 46.0666, "lon": 11.1214},
-            },
-        ),
-    ],
-)
+import json
 
-# E per i bus
-client.upsert(
-    collection_name="transit_collection",
-    points=[
-        PointStruct(
-            id=101,
-            vector=get_real_embedding("Fermata dell'autobus Mattarello Museo Caproni linee 7 e A"),
-            payload={
-                "stop_name": "Fermata Mattarello / Museo Caproni",
-                "lines": ["7", "A"],
-                "location": {"lat": 46.0220, "lon": 11.1260},
-            },
+def genera_descrizione_parcheggio(p):
+    """
+    Crea una stringa descrittiva del parcheggio ignorando i campi vuoti.
+    Questo testo verrà trasformato in vettore e letto dall'LLM.
+    """
+    # Se non c'è il nome, lo chiamiamo genericamente "Parcheggio"
+    nome = p.get("name") if p.get("name") else "Parcheggio"
+    
+    dettagli = [nome]
+    
+    if p.get("parking_type"):
+        # Sostituiamo i trattini bassi con spazi (es. street_side -> street side)
+        tipo = p["parking_type"].replace("_", " ")
+        dettagli.append(f"Tipo: {tipo}")
+        
+    if p.get("capacity"):
+        dettagli.append(f"Capacità: {p['capacity']} posti")
+        
+    if p.get("access"):
+        dettagli.append(f"Accesso: {p['access']}")
+        
+    if p.get("fee"):
+        # In OSM, fee="yes" o "no"
+        costo = "a pagamento" if p["fee"] == "yes" else "gratuito" if p["fee"] == "no" else p["fee"]
+        dettagli.append(f"Tariffa: {costo}")
+
+    # Uniamo i pezzi: "Parcheggio - Tipo: street side - Accesso: public"
+    return " - ".join(dettagli)
+
+
+def carica_parcheggi_reali(file_json="parcheggi.json"):
+    print("Inizio caricamento dei parcheggi reali da JSON...")
+    """
+    Legge il JSON reale, calcola gli embedding e fa l'upsert a blocchi.
+    """
+    print("Lettura del file parcheggi reali in corso...")
+    with open(file_json, "r", encoding="utf-8") as f:
+        dati_parcheggi = json.load(f)
+
+    points = []
+    
+    for p in dati_parcheggi:
+        # 1. Generiamo il testo da vettorizzare
+        testo_descrittivo = genera_descrizione_parcheggio(p)
+        
+        # 2. Calcoliamo il vettore reale (usando la funzione dello step precedente)
+        vettore = get_real_embedding(testo_descrittivo)
+        
+        # 3. Costruiamo il payload pulito, salvando solo ciò che ci serve
+        payload = {
+            "name": p.get("name") or "Parcheggio",
+            "capacity": p.get("capacity") or "Non specificata",
+            "fee": p.get("fee") or "Non specificata",
+            "parking_type": p.get("parking_type") or "Non specificato",
+            # Il campo location è FONDAMENTALE per la ricerca a raggio
+            "location": {"lat": p["lat"], "lon": p["lon"]},
+            "raw_text": testo_descrittivo # Utile da passare all'LLM
+        }
+        
+        # 4. Creiamo il punto per Qdrant (OSM usa ID numerici giganti, Qdrant li accetta tranquillamente)
+        points.append(
+            PointStruct(
+                id=p["id"],
+                vector=vettore,
+                payload=payload
+            )
         )
-    ],
-)
+
+    # 5. Facciamo l'upsert a blocchi (batch) di 100 elementi alla volta
+    # Questo previene crash se hai migliaia di parcheggi nel file
+    batch_size = 100
+    print(f"Inizio caricamento di {len(points)} parcheggi su Qdrant...")
+    
+    for i in range(0, len(points), batch_size):
+        batch = points[i : i + batch_size]
+        client.upsert(
+            collection_name="parking_collection",
+            points=batch
+        )
+        print(f" -> Caricati {i + len(batch)} / {len(points)} parcheggi")
+        
+    print("✅ Tutti i parcheggi reali caricati con successo!\n")
+
+carica_parcheggi_reali("../trento_parking.json")
+
+def genera_descrizione_fermata(stop):
+    """
+    Crea una stringa descrittiva per la fermata del bus.
+    """
+    # Se il nome non c'è, usiamo una dicitura generica
+    nome = stop.get("name") if stop.get("name") else "Fermata Autobus"
+    
+    dettagli = [nome]
+    
+    # In OSM, 'ref' a volte contiene il numero della linea o il codice della fermata
+    if stop.get("ref"):
+        dettagli.append(f"Rif/Linea: {stop['ref']}")
+        
+    # Uniamo i pezzi: es. 'Mesiano / "Facoltà Ingegneria" - Rif/Linea: 5'
+    return " - ".join(dettagli)
+
+
+def carica_fermate_reali(file_json="fermate.json"):
+    """
+    Legge il JSON reale delle fermate, calcola gli embedding e fa l'upsert a blocchi.
+    """
+    print("Lettura del file fermate (stops) in corso...")
+    with open(file_json, "r", encoding="utf-8") as f:
+        dati_fermate = json.load(f)
+
+    points = []
+    
+    for stop in dati_fermate:
+        # 1. Generiamo il testo da vettorizzare
+        testo_descrittivo = genera_descrizione_fermata(stop)
+        
+        # 2. Calcoliamo il vettore reale
+        vettore = get_real_embedding(testo_descrittivo)
+        
+        # 3. Costruiamo il payload per Qdrant
+        payload = {
+            "name": stop.get("name") or "Fermata senza nome",
+            "ref": stop.get("ref") or "Non specificato",
+            # Struttura essenziale per la ricerca GeoRadius
+            "location": {"lat": stop["lat"], "lon": stop["lon"]},
+            "raw_text": testo_descrittivo
+        }
+        
+        # 4. Creiamo il punto Qdrant usando l'ID nativo di OSM
+        points.append(
+            PointStruct(
+                id=stop["id"],
+                vector=vettore,
+                payload=payload
+            )
+        )
+
+    # 5. Upsert a blocchi (batch processing) per non intasare la memoria
+    batch_size = 100
+    print(f"Inizio caricamento di {len(points)} fermate su Qdrant...")
+    
+    for i in range(0, len(points), batch_size):
+        batch = points[i : i + batch_size]
+        client.upsert(
+            collection_name="transit_collection",
+            points=batch
+        )
+        print(f" -> Caricate {i + len(batch)} / {len(points)} fermate")
+        
+    print("✅ Tutte le fermate reali caricate con successo!\n")
+
+# Chiamata della funzione
+carica_fermate_reali("../trento_stops.json")
 
 print("✅ Dati caricati e vettorizzati semanticamente!\n")
 
 # --- PIPELINE DI RETRIEVAL ---
 # (La funzione rimane identica a prima, ma ora i dati nel DB sono reali)
-def hybrid_geospatial_retrieval(event_id, radius_meters=500):
+def hybrid_geospatial_retrieval(event_id, radius_meters=3000):
     print(f"--- Esecuzione Retrieval per Evento ID {event_id} ---")
 
     event_record = client.retrieve(
@@ -162,6 +277,6 @@ def hybrid_geospatial_retrieval(event_id, radius_meters=500):
 
     print(f"\n🚌 TRASPORTO PUBBLICO TROVATO ENTRO {radius_meters}m:")
     for t in nearby_transit:
-        print(f" - {t.payload['stop_name']} [Linee: {', '.join(t.payload['lines'])}]")
+        print(f" - {t.payload['name']}")
 
-hybrid_geospatial_retrieval(event_id=3651, radius_meters=500)
+hybrid_geospatial_retrieval(event_id=3651, radius_meters=3000)
