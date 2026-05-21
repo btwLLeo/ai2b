@@ -113,10 +113,18 @@ if __name__ == "__main__":
 
     print(f"\nFetching bus stops in {city!r}...")
     stops = get_bus_stops(city)
+    filename = f"{city.lower().replace(' ', '_')}_stops.json"
+
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(stops, f, indent=2, ensure_ascii=False)
     print(f"Found {len(stops)} bus stops.")
     print(json.dumps(stops[:5], indent=2), "..." if len(stops) > 5 else "")
 
     print(f"\nFetching bus lines in {city!r}...")
     lines = get_bus_lines(city)
+    filename = f"{city.lower().replace(' ', '_')}_lines.json"
+
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(lines, f, indent=2, ensure_ascii=False)
     print(f"Found {len(lines)} bus lines.")
     print(json.dumps(lines[:5], indent=2), "..." if len(lines) > 5 else "")

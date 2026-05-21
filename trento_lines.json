@@ -1,0 +1,1955 @@
+[
+  {
+    "id": 66629,
+    "name": "Bus B103: Trento->Civezzano->Sover->Cavalese",
+    "ref": "B103",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Cavalese Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 66701,
+    "name": "Bus B102: Trento->Cembra->Capriana->Cavalese",
+    "ref": "B102",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Cavalese Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 79811,
+    "name": "9: Piazza Dante - Cognola - San Donà - Villamontagna",
+    "ref": "9",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Villamontagna",
+    "colour": "#8B4E2B"
+  },
+  {
+    "id": 113579,
+    "name": "Bus B101: (Trento)->Cavalese->Predazzo->Campitello->Canazei->Penia",
+    "ref": "B101",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Penia",
+    "colour": ""
+  },
+  {
+    "id": 165016,
+    "name": "B201old: Trento - Tione - Pinzolo - Madonna di Campiglio - Campo Carlo Magno",
+    "ref": "B201old",
+    "operator": "Trentino Trasporti",
+    "from": "Trento",
+    "to": "Campo Carlo Magno",
+    "colour": ""
+  },
+  {
+    "id": 285365,
+    "name": "A: Piazza Dante - Ospedale Santa Chiara - Clarina - Piazza Dante",
+    "ref": "A",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Piazza Dante",
+    "colour": "#babab7"
+  },
+  {
+    "id": 1206975,
+    "name": "P: Centochiavi - Martignano - Cognola - Povo",
+    "ref": "P",
+    "operator": "Trentino Trasporti",
+    "from": "Centochiavi",
+    "to": "Povo",
+    "colour": "#C52720"
+  },
+  {
+    "id": 1395806,
+    "name": "5: Piazza Dante - Piazza Fiera - Povo - Oltrecastello",
+    "ref": "5",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Oltrecastello",
+    "colour": "#f5c500"
+  },
+  {
+    "id": 1396069,
+    "name": "5: Piazza Dante - Piazza Fiera - Povo Polo Sociale",
+    "ref": "5",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Povo / Povo Sociale",
+    "colour": "#f5c500"
+  },
+  {
+    "id": 1396074,
+    "name": "CM: Povo - Borino - Celva - Passo Cimirlo",
+    "ref": "CM",
+    "operator": "Trentino Trasporti",
+    "from": "Povo",
+    "to": "Cimirlo",
+    "colour": "#f5c500"
+  },
+  {
+    "id": 1396127,
+    "name": "5/: Piazza Dante - Piazza Fiera - Università - Povo Polo Scientifico",
+    "ref": "5/",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Povo / Povo Scientifico",
+    "colour": "#f5c500"
+  },
+  {
+    "id": 1397024,
+    "name": "6/: Grotta - Villazzano - San Rocco - Piazza Dante - Vela",
+    "ref": "6/",
+    "operator": "Trentino Trasporti",
+    "from": "Grotta di Villazzano",
+    "to": "Vela",
+    "colour": "#70b442"
+  },
+  {
+    "id": 1397360,
+    "name": "C: Laste - Stazione - RSA \"San Bartolomeo\"",
+    "ref": "C",
+    "operator": "Trentino Trasporti",
+    "from": "Laste",
+    "to": "RSA \"San Bartolomeo\"",
+    "colour": "black"
+  },
+  {
+    "id": 1397480,
+    "name": "A/: Piazza Dante - Ospedale Santa Chiara - Fersina - Clarina - Piazza Dante",
+    "ref": "A/",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Piazza Dante",
+    "colour": "#babab7"
+  },
+  {
+    "id": 1397510,
+    "name": "C: RSA \"San Bartolomeo\" - RSA \"Angeli Custodi\" - Laste",
+    "ref": "C",
+    "operator": "Trentino Trasporti",
+    "from": "RSA \"San Bartolomeo\"",
+    "to": "Laste",
+    "colour": "black"
+  },
+  {
+    "id": 1398557,
+    "name": "8: Centochiavi - Piazza Dante - Mattarello",
+    "ref": "8",
+    "operator": "Trentino Trasporti",
+    "from": "Guardini / \"Centochiavi\"",
+    "to": "Mattarello / Piazza Perini",
+    "colour": "#52332A"
+  },
+  {
+    "id": 1398728,
+    "name": "2: Piedicastello - Stazione - Ospedale Santa Chiara - Regione - Piedicastello",
+    "ref": "2",
+    "operator": "Trentino Trasporti",
+    "from": "Piedicastello",
+    "to": "Piedicastello",
+    "colour": "#db5826"
+  },
+  {
+    "id": 1398729,
+    "name": "2: Vela - Stazione - Ospedale Santa Chiara - Regione - Vela",
+    "ref": "2",
+    "operator": "Trentino Trasporti",
+    "from": "Vela",
+    "to": "Vela",
+    "colour": "#db5826"
+  },
+  {
+    "id": 1398730,
+    "name": "2: Piedicastello - Stazione - Ospedale Santa Chiara - Regione - Piedicastello",
+    "ref": "2",
+    "operator": "Trentino Trasporti",
+    "from": "Piedicastello",
+    "to": "Piedicastello",
+    "colour": "#db5826"
+  },
+  {
+    "id": 1398731,
+    "name": "2: Piedicastello - Stazione - Ospedale Santa Chiara - Regione - Piedicastello",
+    "ref": "2",
+    "operator": "Trentino Trasporti",
+    "from": "Piedicastello",
+    "to": "Piedicastello",
+    "colour": "#db5826"
+  },
+  {
+    "id": 1635770,
+    "name": "6/: Vela - Piazza Dante - San Rocco - Villazzano - Grotta",
+    "ref": "6/",
+    "operator": "Trentino Trasporti",
+    "from": "Vela",
+    "to": "Grotta di Villazzano",
+    "colour": "#70b442"
+  },
+  {
+    "id": 1635791,
+    "name": "13: Povo - San Rocco - Rosmini - Piazza Dante",
+    "ref": "13",
+    "operator": "Trentino Trasporti",
+    "from": "Povo / Polo Sociale",
+    "to": "Piazza Dante",
+    "colour": "#BF6092"
+  },
+  {
+    "id": 4782672,
+    "name": "4: Gardolo - Roncafort - Stazione - Via Degasperi - Madonna Bianca",
+    "ref": "4",
+    "operator": "Trentino Trasporti",
+    "from": "Gardolo",
+    "to": "Madonna Bianca",
+    "colour": "#007BC3"
+  },
+  {
+    "id": 6076493,
+    "name": "Flixbus 531: Roma, Tiburtina => München ZOB",
+    "ref": "531",
+    "operator": "Flixbus",
+    "from": "Roma, Tiburtina",
+    "to": "München ZOB",
+    "colour": ""
+  },
+  {
+    "id": 6076494,
+    "name": "Flixbus N531: Roma, Tiburtina => München, ZOB",
+    "ref": "N531",
+    "operator": "Autoservizi Troiani s.r.l.",
+    "from": "Roma, Tiburtina",
+    "to": "München, ZOB",
+    "colour": ""
+  },
+  {
+    "id": 6076495,
+    "name": "Flixbus N95: Milano, Lampugnano => Berlin ZOB",
+    "ref": "N95",
+    "operator": "Schröder Reisen",
+    "from": "Milano, Lampugnano",
+    "to": "Berlin ZOB",
+    "colour": ""
+  },
+  {
+    "id": 6089575,
+    "name": "Flixbus 491: München, ZOB => Venezia, Aeroporto di Venezia Marco Polo",
+    "ref": "491",
+    "operator": "Cortinaexpress Fly Bus",
+    "from": "München, ZOB",
+    "to": "Venezia, Aeroporto di Venezia Marco Polo",
+    "colour": ""
+  },
+  {
+    "id": 6387586,
+    "name": "Flixbus 494: Bolzano => Cannes, Le Cannet",
+    "ref": "494",
+    "operator": "Flixbus",
+    "from": "Bolzano",
+    "to": "Cannes, Le Cannet",
+    "colour": ""
+  },
+  {
+    "id": 6390769,
+    "name": "Flixbus N452: Nürnberg, ZOB => Florenz, Villa Constanza",
+    "ref": "N452",
+    "operator": "Flixbus",
+    "from": "Nürnberg, ZOB",
+    "to": "Florenz, Villa Constanza",
+    "colour": ""
+  },
+  {
+    "id": 6970784,
+    "name": "Bus B102: Cavalese->Capriana->Cembra->Trento",
+    "ref": "B102",
+    "operator": "Trentino Trasporti",
+    "from": "Cavalese Autostazione",
+    "to": "Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 6975142,
+    "name": "Bus B103: Cavalese->Sover->Civezzano->Trento",
+    "ref": "B103",
+    "operator": "Trentino Trasporti",
+    "from": "Cavalese Autostazione",
+    "to": "Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 6980895,
+    "name": "Bus B101: Penia ->Canazei->Capitello->Predazzo->Cavalese ->(Trento)",
+    "ref": "B101",
+    "operator": "Trentino Trasporti",
+    "from": "Penia",
+    "to": "Cavalese",
+    "colour": ""
+  },
+  {
+    "id": 8848984,
+    "name": "Flixbus 531: München ZOB => Roma, Tiburtina",
+    "ref": "531",
+    "operator": "Flixbus",
+    "from": "München ZOB",
+    "to": "Roma, Tiburtina",
+    "colour": ""
+  },
+  {
+    "id": 8878197,
+    "name": "Flixbus 491: Venezia, Aeroporto di Venezia Marco Polo => München ZOB",
+    "ref": "491",
+    "operator": "Cortinaexpress Fly Bus",
+    "from": "Venezia, Aeroporto di Venezia Marco Polo",
+    "to": "München ZOB",
+    "colour": ""
+  },
+  {
+    "id": 8886362,
+    "name": "Flixbus N531: München ZOB => Roma, Tiburtina",
+    "ref": "N531",
+    "operator": "Autoservizi Troiani s.r.l.",
+    "from": "München ZOB",
+    "to": "Roma, Tiburtina",
+    "colour": ""
+  },
+  {
+    "id": 8903021,
+    "name": "Flixbus N95: Berlin ZOB => Milano, Lampugnano",
+    "ref": "N95",
+    "operator": "Schröder Reisen",
+    "from": "Berlin ZOB",
+    "to": "Milano, Lampugnano",
+    "colour": ""
+  },
+  {
+    "id": 9141108,
+    "name": "Flixbus N491: München, ZOB => Venezia, Aeroporto di Venezia Marco Polo",
+    "ref": "N491",
+    "operator": "Cortinaexpress Fly Bus",
+    "from": "München, ZOB",
+    "to": "Venezia, Aeroporto di Venezia Marco Polo",
+    "colour": ""
+  },
+  {
+    "id": 9141290,
+    "name": "Flixbus N491: Venezia, Aeroporto di Venezia Marco Polo => München ZOB",
+    "ref": "N491",
+    "operator": "Cortinaexpress Fly Bus",
+    "from": "Venezia, Aeroporto di Venezia Marco Polo",
+    "to": "München ZOB",
+    "colour": ""
+  },
+  {
+    "id": 9188029,
+    "name": "Flixbus N538: Praha, ÚAN Florenc => Florenz, Villa Costanza",
+    "ref": "N538",
+    "operator": "Flixbus",
+    "from": "Praha, ÚAN Florenc",
+    "to": "Firenze, Villa Costanza",
+    "colour": ""
+  },
+  {
+    "id": 9188581,
+    "name": "Flixbus N538: Firenze, Villa Costanza => Praha, ÚAN Florenc",
+    "ref": "N538",
+    "operator": "Flixbus",
+    "from": "Firenze, Villa Costanza",
+    "to": "Praha, ÚAN Florenc",
+    "colour": ""
+  },
+  {
+    "id": 9211558,
+    "name": "Flixbus N452: Florenz, Piazzale Montelungo => Nürnberg, ZOB",
+    "ref": "N452",
+    "operator": "Flixbus",
+    "from": "Florenz, Piazzale Montelungo",
+    "to": "Nürnberg, ZOB",
+    "colour": ""
+  },
+  {
+    "id": 9214646,
+    "name": "Flixbus 494: Cannes, Le Cannet => Bolzano",
+    "ref": "494",
+    "operator": "Flixbus",
+    "from": "Cannes, Le Cannet",
+    "to": "Bolzano",
+    "colour": ""
+  },
+  {
+    "id": 9214772,
+    "name": "Flixbus 408: Bolzano => Genova, Fanti d'Italia/Principe",
+    "ref": "408",
+    "operator": "Morandi Tour",
+    "from": "Bolzano",
+    "to": "Genova, Fanti d'Italia/Principe",
+    "colour": ""
+  },
+  {
+    "id": 9214827,
+    "name": "Flixbus 408: Genova, Fanti d'Italia/Principe => Bolzano",
+    "ref": "408",
+    "operator": "Morandi Tour",
+    "from": "Genova, Fanti d'Italia/Principe",
+    "to": "Bolzano",
+    "colour": ""
+  },
+  {
+    "id": 9215022,
+    "name": "Flixbus 407: Merano, Therme => Torino, Vittorio Emanuele",
+    "ref": "407",
+    "operator": "Air Pullman",
+    "from": "Merano, Therme",
+    "to": "Torino, Vittorio Emanuele",
+    "colour": ""
+  },
+  {
+    "id": 9218550,
+    "name": "Flixbus 407: Torino, Vittorio Emanuele => Merano, Therme",
+    "ref": "407",
+    "operator": "Air Pullman",
+    "from": "Torino, Vittorio Emanuele",
+    "to": "Merano, Therme",
+    "colour": ""
+  },
+  {
+    "id": 9288679,
+    "name": "Flixbus 455: Nürnberg, ZOB => Milano, Lampugnano",
+    "ref": "455",
+    "operator": "Flixbus",
+    "from": "Nürnberg, ZOB",
+    "to": "Milano, Lampugnano",
+    "colour": ""
+  },
+  {
+    "id": 9289023,
+    "name": "Flixbus 455: Milano, Lampugnano => Nürnberg, ZOB",
+    "ref": "455",
+    "operator": "Flixbus",
+    "from": "Milano, Lampugnano",
+    "to": "Nürnberg, ZOB",
+    "colour": ""
+  },
+  {
+    "id": 9351570,
+    "name": "Flixbus N468: Bratislava, centrálna autobusová stanica => Milano, Lampugnano",
+    "ref": "N468",
+    "operator": "Blaguss Slovakia s.r.o",
+    "from": "Bratislava, centrálna autobusová stanica",
+    "to": "Milano, Lampugnano",
+    "colour": ""
+  },
+  {
+    "id": 9351571,
+    "name": "Flixbus N468: Milano, Lampugnano => Bratislava, centrálna autobusová stanica",
+    "ref": "N468",
+    "operator": "Blaguss Slovakia s.r.o",
+    "from": "Milano, Lampugnano",
+    "to": "Bratislava, centrálna autobusová stanica",
+    "colour": ""
+  },
+  {
+    "id": 9368194,
+    "name": "Flixbus 534: Roma, Tiburtina => Bolzano",
+    "ref": "534",
+    "operator": "Flixbus",
+    "from": "Roma, Tiburtina",
+    "to": "Bolzano",
+    "colour": ""
+  },
+  {
+    "id": 9368195,
+    "name": "Flixbus 534: Bolzano => Roma, Tiburtina",
+    "ref": "534",
+    "operator": "Flixbus",
+    "from": "Bolzano",
+    "to": "Roma, Tiburtina",
+    "colour": ""
+  },
+  {
+    "id": 9423938,
+    "name": "Flixbus N530: Roma, Tiburtina => Bolzano",
+    "ref": "N530",
+    "operator": "Sata s.r.l.",
+    "from": "Roma, Tiburtina",
+    "to": "Bolzano",
+    "colour": ""
+  },
+  {
+    "id": 9423939,
+    "name": "Flixbus N530: Bolzano => Roma, Tiburtina",
+    "ref": "N530",
+    "operator": "Sata s.r.l.",
+    "from": "Bolzano",
+    "to": "Roma, Tiburtina",
+    "colour": ""
+  },
+  {
+    "id": 9426202,
+    "name": "Flixbus 424: Cuneo, Movicentro => Salzburg Süd",
+    "ref": "424",
+    "operator": "Flixbus",
+    "from": "Cuneo, Movicentro",
+    "to": "Salzburg Süd",
+    "colour": ""
+  },
+  {
+    "id": 9426203,
+    "name": "Flixbus 424: Salzburg Süd => Cuneo, Movicentro",
+    "ref": "424",
+    "operator": "Flixbus",
+    "from": "Salzburg Süd",
+    "to": "Cuneo, Movicentro",
+    "colour": ""
+  },
+  {
+    "id": 9545582,
+    "name": "Flixbus 453: Ancona, parcheggio Archi => München, ZOB",
+    "ref": "453",
+    "operator": "SAPS",
+    "from": "Ancona, parcheggio Archi",
+    "to": "München, ZOB",
+    "colour": ""
+  },
+  {
+    "id": 9545583,
+    "name": "Flixbus 453: München, ZOB => Ancona, parcheggio Archi",
+    "ref": "453",
+    "operator": "SAPS",
+    "from": "München, ZOB",
+    "to": "Ancona, parcheggio Archi",
+    "colour": ""
+  },
+  {
+    "id": 9605537,
+    "name": "B205: Trento - Pietramurata - Arco - Riva del Garda",
+    "ref": "B205",
+    "operator": "Trentino Trasporti",
+    "from": "Trento",
+    "to": "Riva del Garda",
+    "colour": ""
+  },
+  {
+    "id": 9652401,
+    "name": "Flixbus N532: Napoli, Metropark Centrale => München ZOB",
+    "ref": "N532",
+    "operator": "Flixbus",
+    "from": "Napoli, Metropark Centrale",
+    "to": "München ZOB",
+    "colour": ""
+  },
+  {
+    "id": 9652402,
+    "name": "Flixbus N532: München ZOB => Napoli, Metropark Centrale",
+    "ref": "N532",
+    "operator": "Flixbus",
+    "from": "München ZOB",
+    "to": "Napoli, Metropark Centrale",
+    "colour": ""
+  },
+  {
+    "id": 9652816,
+    "name": "Flixbus N453: München Flughafen => Rimini, Miramare",
+    "ref": "N453",
+    "operator": "Flixbus",
+    "from": "München Flughafen",
+    "to": "Rimini, Miramare",
+    "colour": ""
+  },
+  {
+    "id": 9652817,
+    "name": "Flixbus N453: Rimini, Miramare => München Flughafen",
+    "ref": "N453",
+    "operator": "Flixbus",
+    "from": "Rimini, Miramare",
+    "to": "München Flughafen",
+    "colour": ""
+  },
+  {
+    "id": 9670871,
+    "name": "Flixbus 485: Assisi, Piazza Unità d'Italia => München ZOB",
+    "ref": "485",
+    "operator": "Flixbus",
+    "from": "Assisi, Piazza Unità d'Italia",
+    "to": "München ZOB",
+    "colour": ""
+  },
+  {
+    "id": 9670872,
+    "name": "Flixbus 485: München ZOB => Assisi, Piazza Unità d'Italia",
+    "ref": "485",
+    "operator": "Flixbus",
+    "from": "München ZOB",
+    "to": "Assisi, Piazza Unità d'Italia",
+    "colour": ""
+  },
+  {
+    "id": 9713120,
+    "name": "Flixbus 486: Bologna, Autostazione => München ZOB",
+    "ref": "486",
+    "operator": "Garbellini s.r.l.",
+    "from": "Bologna, Autostazione",
+    "to": "München ZOB",
+    "colour": ""
+  },
+  {
+    "id": 9713121,
+    "name": "Flixbus 486: München ZOB => Bologna, Autostazione",
+    "ref": "486",
+    "operator": "Garbellini s.r.l.",
+    "from": "München ZOB",
+    "to": "Bologna, Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 9716909,
+    "name": "Flixbus N494: Bolzano => Cannes, Le Cannet",
+    "ref": "N494",
+    "operator": "Flixbus",
+    "from": "Bolzano",
+    "to": "Cannes, Le Cannet",
+    "colour": ""
+  },
+  {
+    "id": 9716910,
+    "name": "Flixbus N494: Cannes, Le Cannet => Bolzano",
+    "ref": "N494",
+    "operator": "Flixbus",
+    "from": "Cannes, Le Cannet",
+    "to": "Bolzano",
+    "colour": ""
+  },
+  {
+    "id": 9735798,
+    "name": "Flixbus 451: Sirmione Colombare 201 => München, ZOB",
+    "ref": "451",
+    "operator": "Flixbus",
+    "from": "Sirmione Colombare 201",
+    "to": "München, ZOB",
+    "colour": ""
+  },
+  {
+    "id": 9735799,
+    "name": "Flixbus 451: München, ZOB => Sirmione Colombare 201",
+    "ref": "451",
+    "operator": "Flixbus",
+    "from": "München, ZOB",
+    "to": "Sirmione Colombare 201",
+    "colour": ""
+  },
+  {
+    "id": 9790950,
+    "name": "Flixbus 545: Bologna, Autostazione => Gardasee/Lago di Garda => Wien Erdberg, Busterminal VIB",
+    "ref": "545",
+    "operator": "Flixbus",
+    "from": "Bologna, Autostazione",
+    "to": "Wien Erdberg, Busterminal VIB",
+    "colour": ""
+  },
+  {
+    "id": 9790951,
+    "name": "Flixbus 545: Wien Erdberg, Busterminal VIB => Gardasee/Lago di Garda => Bologna, Autostazione",
+    "ref": "545",
+    "operator": "Flixbus",
+    "from": "Wien Erdberg, Busterminal VIB",
+    "to": "Bologna, Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 9833446,
+    "name": "Flixbus N492: Milano, Aeroporto di Malpensa Terminal 2 => München Flughafen",
+    "ref": "N492",
+    "operator": "Flixbus",
+    "from": "Milano, Aeroporto di Malpensa Terminal 2",
+    "to": "München Flughafen",
+    "colour": ""
+  },
+  {
+    "id": 9833447,
+    "name": "Flixbus N492: München, Flughafen => Milano, Aeroporto di Malpensa Terminal 2",
+    "ref": "N492",
+    "operator": "Flixbus",
+    "from": "München, Flughafen",
+    "to": "Milano, Aeroporto di Malpensa Terminal 2",
+    "colour": ""
+  },
+  {
+    "id": 9920082,
+    "name": "Flixbus N277: Lido di Jesolo => Frankfurt (Main) Hbf",
+    "ref": "N277",
+    "operator": "SAPS",
+    "from": "Lido di Jesolo",
+    "to": "Frankfurt (Main) Hbf",
+    "colour": ""
+  },
+  {
+    "id": 9920083,
+    "name": "Flixbus N277: Frankfurt (Main) Hbf => Lido di Jesolo",
+    "ref": "N277",
+    "operator": "SAPS",
+    "from": "Frankfurt (Main) Hbf",
+    "to": "Lido di Jesolo",
+    "colour": ""
+  },
+  {
+    "id": 10035539,
+    "name": "Flixbus 454: Praha, ÚAN Florenc => Bologna, Autostazione",
+    "ref": "454",
+    "operator": "Garbellini s.r.l.",
+    "from": "Praha, ÚAN Florenc",
+    "to": "Bologna, Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 10035540,
+    "name": "Flixbus 454: Bologna, Autostazione => Praha, ÚAN Florenc",
+    "ref": "454",
+    "operator": "Garbellini s.r.l.",
+    "from": "Bologna, Autostazione",
+    "to": "Praha, ÚAN Florenc",
+    "colour": ""
+  },
+  {
+    "id": 10092674,
+    "name": "Flixbus 545: Wien Erdberg, Busterminal VIB => Bologna, Autostazione",
+    "ref": "545",
+    "operator": "Flixbus",
+    "from": "Wien Erdberg, Busterminal VIB",
+    "to": "Bologna, Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 10092675,
+    "name": "Flixbus 545: Bologna, Autostazione => Wien Erdberg, Busterminal VIB",
+    "ref": "545",
+    "operator": "Flixbus",
+    "from": "Bologna, Autostazione",
+    "to": "Wien Erdberg, Busterminal VIB",
+    "colour": ""
+  },
+  {
+    "id": 10103803,
+    "name": "8/: Centochiavi - Piazza Dante - Mattarello",
+    "ref": "8/",
+    "operator": "Trentino Trasporti",
+    "from": "Guardini / \"Centochiavi\"",
+    "to": "Mattarello / sud",
+    "colour": "#52332A"
+  },
+  {
+    "id": 10307698,
+    "name": "Flixbus N409: Hamburg ZOB => Bologna, Autostazione",
+    "ref": "N409",
+    "operator": "SAPS",
+    "from": "Hamburg ZOB",
+    "to": "Bologna, Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 10307699,
+    "name": "Flixbus N409: Bologna, Autostazione => Hamburg ZOB",
+    "ref": "N409",
+    "operator": "SAPS",
+    "from": "Bologna, Autostazione",
+    "to": "Hamburg ZOB",
+    "colour": ""
+  },
+  {
+    "id": 10355294,
+    "name": "Flixbus N537: Dortmund ZOB => Firenze, Villa Costanza",
+    "ref": "N537",
+    "operator": "Flixbus",
+    "from": "Dortmund ZOB",
+    "to": "Firenze, Villa Costanza",
+    "colour": ""
+  },
+  {
+    "id": 10355295,
+    "name": "Flixbus N537: Firenze, Villa Costanza => Dortmund ZOB",
+    "ref": "N537",
+    "operator": "Flixbus",
+    "from": "Firenze, Villa Costanza",
+    "to": "Dortmund ZOB",
+    "colour": ""
+  },
+  {
+    "id": 11738832,
+    "name": "Flixbus N1798: Lyon, Gerland => Bolzano",
+    "ref": "N1798",
+    "operator": "Flixbus",
+    "from": "Lyon, Gerland",
+    "to": "Bolzano",
+    "colour": ""
+  },
+  {
+    "id": 11738833,
+    "name": "Flixbus N1798: Bolzano => Lyon, Gerland",
+    "ref": "N1798",
+    "operator": "Flixbus",
+    "from": "Bolzano",
+    "to": "Lyon, Gerland",
+    "colour": ""
+  },
+  {
+    "id": 11892155,
+    "name": "Flixbus N1586: Mangone, Stazione de servizio Tamoil => Brixen/Vahrn",
+    "ref": "N1586",
+    "operator": "Flixbus",
+    "from": "Mangone, Stazione de servizio Tamoil",
+    "to": "Brixen/Vahrn - Bressanone/Varna",
+    "colour": ""
+  },
+  {
+    "id": 11894837,
+    "name": "Flixbus N1586: Brixen/Vahrn => Mangone, Stazione de servizio Tamoil",
+    "ref": "N1586",
+    "operator": "Flixbus",
+    "from": "Brixen/Vahrn - Bressanone/Varna",
+    "to": "Mangone, Stazione de servizio Tamoil",
+    "colour": ""
+  },
+  {
+    "id": 13110016,
+    "name": "8: Mattarello - Piazza Dante - Centochiavi",
+    "ref": "8",
+    "operator": "Trentino Trasporti",
+    "from": "Mattarello / sud",
+    "to": "Guardini / \"Centochiavi\"",
+    "colour": "#52332A"
+  },
+  {
+    "id": 13110017,
+    "name": "8: Mattarello - Piazza Dante - Centochiavi",
+    "ref": "8",
+    "operator": "Trentino Trasporti",
+    "from": "Mattarello / Piazza Perini",
+    "to": "Guardini / \"Centochiavi\"",
+    "colour": "#52332A"
+  },
+  {
+    "id": 14084745,
+    "name": "17: Piazza Dante - Via Bolzano - Lamar - Lavis",
+    "ref": "17",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Lavis",
+    "colour": "#1F9ACF"
+  },
+  {
+    "id": 14084746,
+    "name": "17: Lavis - San Lazzaro - Via Bolzano - Piazza Dante",
+    "ref": "17",
+    "operator": "Trentino Trasporti",
+    "from": "Lavis",
+    "to": "Piazza Dante",
+    "colour": "#1F9ACF"
+  },
+  {
+    "id": 14084797,
+    "name": "11: Piazza Dante - Via Brennero - Gardolo - Spini",
+    "ref": "11",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Spini di Gardolo",
+    "colour": "#582E79"
+  },
+  {
+    "id": 14084798,
+    "name": "11: Spini di Gardolo - Via Brennero - Piazza Dante",
+    "ref": "11",
+    "operator": "Trentino Trasporti",
+    "from": "Spini di Gardolo",
+    "to": "Piazza Dante",
+    "colour": "#582E79"
+  },
+  {
+    "id": 14086290,
+    "name": "17: Piazza Dante - Melta - Via Bolzano - Lavis",
+    "ref": "17",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Lavis",
+    "colour": "#1F9ACF"
+  },
+  {
+    "id": 14086291,
+    "name": "17: Lavis - Spini - Via Brennero - Melta - Piazza Dante",
+    "ref": "17",
+    "operator": "Trentino Trasporti",
+    "from": "Lavis",
+    "to": "Piazza Dante",
+    "colour": "#1F9ACF"
+  },
+  {
+    "id": 14095087,
+    "name": "G: Spini di Gardolo - Gardolo",
+    "ref": "G",
+    "operator": "Trentino Trasporti",
+    "from": "Spini di Gardolo",
+    "to": "Gardolo",
+    "colour": "#582E79"
+  },
+  {
+    "id": 14095088,
+    "name": "G: Spini di Gardolo - Palazzine - Gardolo",
+    "ref": "G",
+    "operator": "Trentino Trasporti",
+    "from": "Spini di Gardolo",
+    "to": "Gardolo",
+    "colour": "#582E79"
+  },
+  {
+    "id": 14095089,
+    "name": "G: Gardolo - Ghiaie - Spini di Gardolo",
+    "ref": "G",
+    "operator": "Trentino Trasporti",
+    "from": "Gardolo",
+    "to": "Spini di Gardolo",
+    "colour": "#582E79"
+  },
+  {
+    "id": 14095090,
+    "name": "G: Gardolo - Spini di Gardolo",
+    "ref": "G",
+    "operator": "Trentino Trasporti",
+    "from": "Gardolo",
+    "to": "Spini di Gardolo",
+    "colour": "#582E79"
+  },
+  {
+    "id": 14095092,
+    "name": "G: Gardolo - Gardolo di Mezzo - Gardolo",
+    "ref": "G",
+    "operator": "Trentino Trasporti",
+    "from": "Gardolo",
+    "to": "Gardolo",
+    "colour": "#582E79"
+  },
+  {
+    "id": 14097862,
+    "name": "15: Piazza Dante - Interporto - Spini di Gardolo",
+    "ref": "15",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Spini di Gardolo",
+    "colour": "#72E006"
+  },
+  {
+    "id": 14097863,
+    "name": "15: Spini di Gardolo - Interporto - Piazza Dante",
+    "ref": "15",
+    "operator": "Trentino Trasporti",
+    "from": "Spini di Gardolo",
+    "to": "Piazza Dante",
+    "colour": "#72E006"
+  },
+  {
+    "id": 14105898,
+    "name": "7: Gocciadoro - Piazza Dante - Melta - Canova",
+    "ref": "7",
+    "operator": "Trentino Trasporti",
+    "from": "Gocciadoro",
+    "to": "Canova",
+    "colour": "#0A9B86"
+  },
+  {
+    "id": 14105899,
+    "name": "7: Canova - Melta - Piazza Dante - Gocciadoro",
+    "ref": "7",
+    "operator": "Trentino Trasporti",
+    "from": "Canova",
+    "to": "Gocciadoro",
+    "colour": "#0A9B86"
+  },
+  {
+    "id": 14115572,
+    "name": "3: Villazzano 3 - P. Dante - Gardolo - Cortesano",
+    "ref": "3",
+    "operator": "Trentino Trasporti",
+    "from": "Villazzano 3",
+    "to": "Cortesano",
+    "colour": "#C52720"
+  },
+  {
+    "id": 14115573,
+    "name": "3/: Villazzano 3 - P. Dante - Gardolo - Cortesano",
+    "ref": "3/",
+    "operator": "Trentino Trasporti",
+    "from": "Villazzano 3",
+    "to": "Cortesano",
+    "colour": "#C52720"
+  },
+  {
+    "id": 14115574,
+    "name": "3/: Cortesano - Gardolo - P. Dante - Villazzano 3",
+    "ref": "3/",
+    "operator": "Trentino Trasporti",
+    "from": "Cortesano",
+    "to": "Villazzano 3",
+    "colour": "#C52720"
+  },
+  {
+    "id": 14115575,
+    "name": "3: Cortesano - Gardolo - P. Dante - Villazzano 3",
+    "ref": "3",
+    "operator": "Trentino Trasporti",
+    "from": "Cortesano",
+    "to": "Villazzano 3",
+    "colour": "#C52720"
+  },
+  {
+    "id": 14115604,
+    "name": "3: Villazzano 3 - P. Dante - Gardolo - Camparta - Cortesano",
+    "ref": "3",
+    "operator": "Trentino Trasporti",
+    "from": "Villazzano 3",
+    "to": "Cortesano",
+    "colour": "#C52720"
+  },
+  {
+    "id": 14115605,
+    "name": "3: Cortesano - Camparta - Gardolo - P. Dante - Villazzano 3",
+    "ref": "3",
+    "operator": "Trentino Trasporti",
+    "from": "Cortesano",
+    "to": "Villazzano 3",
+    "colour": "#C52720"
+  },
+  {
+    "id": 14117851,
+    "name": "3: Villazzano 3 - P. Dante - Gardolo - Cortesano",
+    "ref": "3",
+    "operator": "Trentino Trasporti",
+    "from": "Villazzano 3",
+    "to": "Cortesano",
+    "colour": "#C52720"
+  },
+  {
+    "id": 14117852,
+    "name": "3: Cortesano - Gardolo - P. Dante - Villazzano 3",
+    "ref": "3",
+    "operator": "Trentino Trasporti",
+    "from": "Cortesano",
+    "to": "Villazzano 3",
+    "colour": "#C52720"
+  },
+  {
+    "id": 14120572,
+    "name": "4/: Madonna Bianca - Via Degasperi - Regione - Roncafort",
+    "ref": "4/",
+    "operator": "Trentino Trasporti",
+    "from": "Madonna Bianca",
+    "to": "Roncafort",
+    "colour": "#007BC3"
+  },
+  {
+    "id": 14120573,
+    "name": "4: Madonna Bianca - Via Degasperi - Regione - Roncafort - Gardolo",
+    "ref": "4",
+    "operator": "Trentino Trasporti",
+    "from": "Madonna Bianca",
+    "to": "Gardolo",
+    "colour": "#007BC3"
+  },
+  {
+    "id": 14120574,
+    "name": "4/: Roncafort - Stazione - Via Degasperi - Madonna Bianca",
+    "ref": "4/",
+    "operator": "Trentino Trasporti",
+    "from": "Roncafort",
+    "to": "Madonna Bianca",
+    "colour": "#007BC3"
+  },
+  {
+    "id": 14121194,
+    "name": "4: Spini - Gardolo - Roncafort - Stazione - Via Degasperi - Madonna Bianca",
+    "ref": "4",
+    "operator": "Trentino Trasporti",
+    "from": "Spini di Gardolo",
+    "to": "Madonna Bianca",
+    "colour": "#007BC3"
+  },
+  {
+    "id": 14121195,
+    "name": "4: Madonna Bianca - Via Degasperi - Regione - Roncafort - Gardolo - Canova - Spini",
+    "ref": "4",
+    "operator": "Trentino Trasporti",
+    "from": "Madonna Bianca",
+    "to": "Spini di Gardolo",
+    "colour": "#007BC3"
+  },
+  {
+    "id": 14127398,
+    "name": "8/: Mattarello - Viale Verona - Piazza Dante",
+    "ref": "8/",
+    "operator": "Trentino Trasporti",
+    "from": "Mattarello / sud",
+    "to": "Piazza Dante",
+    "colour": "#52332A"
+  },
+  {
+    "id": 14127399,
+    "name": "8/: Piazza Dante - Viale Verona - Mattarello",
+    "ref": "8/",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Mattarello / sud",
+    "colour": "#52332A"
+  },
+  {
+    "id": 14127400,
+    "name": "4/: Mattarello - Via Degasperi - Romagnosi - Roncafort",
+    "ref": "4/",
+    "operator": "Trentino Trasporti",
+    "from": "Mattarello / Piazza Perini",
+    "to": "Roncafort",
+    "colour": "#007BC3"
+  },
+  {
+    "id": 14127401,
+    "name": "4/: Mattarello - Via Degasperi - Romagnosi - Roncafort",
+    "ref": "4/",
+    "operator": "Trentino Trasporti",
+    "from": "Mattarello / sud",
+    "to": "Roncafort",
+    "colour": "#007BC3"
+  },
+  {
+    "id": 14127402,
+    "name": "8: Roncafort - Centochiavi - Piazza Dante - Mattarello",
+    "ref": "8",
+    "operator": "Trentino Trasporti",
+    "from": "Roncafort",
+    "to": "Mattarello / Piazza Perini",
+    "colour": "#52332A"
+  },
+  {
+    "id": 14127403,
+    "name": "8/: Roncafort - Centochiavi - Piazza Dante - Mattarello",
+    "ref": "8/",
+    "operator": "Trentino Trasporti",
+    "from": "Roncafort",
+    "to": "Mattarello / sud",
+    "colour": "#52332A"
+  },
+  {
+    "id": 14127499,
+    "name": "P: Povo - Cognola - Martignano - Centochiavi",
+    "ref": "P",
+    "operator": "Trentino Trasporti",
+    "from": "Centochiavi",
+    "to": "Povo",
+    "colour": "#C52720"
+  },
+  {
+    "id": 14127561,
+    "name": "CM: Passo Cimirlo - Celva - Borino - Povo",
+    "ref": "CM",
+    "operator": "Trentino Trasporti",
+    "from": "Cimirlo",
+    "to": "Povo",
+    "colour": "#f5c500"
+  },
+  {
+    "id": 14131362,
+    "name": "5: Povo Povo Sociale - Port'Aquila - Piazza Dante",
+    "ref": "5",
+    "operator": "Trentino Trasporti",
+    "from": "Povo / Polo Sociale",
+    "to": "Piazza Dante",
+    "colour": "#f5c500"
+  },
+  {
+    "id": 14131363,
+    "name": "5: Oltrecastello - Povo - Port'Aquila - Piazza Dante",
+    "ref": "5",
+    "operator": "Trentino Trasporti",
+    "from": "Oltrecastello",
+    "to": "Piazza Dante",
+    "colour": "#f5c500"
+  },
+  {
+    "id": 14131364,
+    "name": "5: Povo Polo Scientifico - Università - Port'Aquila - Piazza Dante",
+    "ref": "5",
+    "operator": "Trentino Trasporti",
+    "from": "Povo / Polo Scientifico",
+    "to": "Piazza Dante",
+    "colour": "#f5c500"
+  },
+  {
+    "id": 14136934,
+    "name": "9: Villamontagna - Cognola - San Donà - Piazza Dante",
+    "ref": "9",
+    "operator": "Trentino Trasporti",
+    "from": "Villamontagna",
+    "to": "Piazza Dante",
+    "colour": "#8B4E2B"
+  },
+  {
+    "id": 14136956,
+    "name": "5: Piazza Dante - Piazza Fiera - Povo - San Donà - Oltrecastello",
+    "ref": "5",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Oltrecastello",
+    "colour": "#f5c500"
+  },
+  {
+    "id": 14137873,
+    "name": "10/: Piazza Dante - Cervara - Martignano - Montevaccino",
+    "ref": "10/",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Montevaccino",
+    "colour": "#0A5543"
+  },
+  {
+    "id": 14137874,
+    "name": "10/: Montevaccino - Martignano - Cervara - Piazza Dante",
+    "ref": "10/",
+    "operator": "Trentino Trasporti",
+    "from": "Montevaccino",
+    "to": "Piazza Dante",
+    "colour": "#0A5543"
+  },
+  {
+    "id": 14137875,
+    "name": "M: Martignano - Montevaccino",
+    "ref": "M",
+    "operator": "Trentino Trasporti",
+    "from": "Martignano",
+    "to": "Montevaccino",
+    "colour": "#074E3C"
+  },
+  {
+    "id": 14137876,
+    "name": "M: Montevaccino - Martignano",
+    "ref": "M",
+    "operator": "Trentino Trasporti",
+    "from": "Montevaccino",
+    "to": "Martignano",
+    "colour": "#074E3C"
+  },
+  {
+    "id": 14144293,
+    "name": "10: Piazza Dante - Martignano - San Donà - Cognola - Villamontagna",
+    "ref": "10",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Villamontagna",
+    "colour": "#0A5543"
+  },
+  {
+    "id": 14144294,
+    "name": "10: Villamontagna - Cognola - San Donà - Martignano - Piazza Dante",
+    "ref": "10",
+    "operator": "Trentino Trasporti",
+    "from": "Villamontagna",
+    "to": "Piazza Dante",
+    "colour": "#0A5543"
+  },
+  {
+    "id": 14144295,
+    "name": "10: Villamontagna - Cognola - Martignano - Cervara - Piazza Dante",
+    "ref": "10",
+    "operator": "Trentino Trasporti",
+    "from": "Villamontagna",
+    "to": "Piazza Dante",
+    "colour": "#0A5543"
+  },
+  {
+    "id": 14144296,
+    "name": "10: Piazza Dante - Cervara - Martignano - Cognola - Villamontagna",
+    "ref": "10",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Villamontagna",
+    "colour": "#0A5543"
+  },
+  {
+    "id": 14144297,
+    "name": "10: Piazza Dante - Cervara - Martignano - Cognola",
+    "ref": "10",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Cognola",
+    "colour": "#0A5543"
+  },
+  {
+    "id": 14144298,
+    "name": "10: Cognola - Martignano - Cervara - Piazza Dante",
+    "ref": "10",
+    "operator": "Trentino Trasporti",
+    "from": "Cognola",
+    "to": "Piazza Dante",
+    "colour": "#0A5543"
+  },
+  {
+    "id": 14149948,
+    "name": "13: Piazza Dante - Rosmini - San Rocco - Povo",
+    "ref": "13",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Povo / Polo Sociale",
+    "colour": "#BF6092"
+  },
+  {
+    "id": 14166297,
+    "name": "6: Vela - Piazza Dante - Villazzano - Gabbiolo",
+    "ref": "6",
+    "operator": "Trentino Trasporti",
+    "from": "Vela",
+    "to": "Gabbiolo",
+    "colour": "#70b442"
+  },
+  {
+    "id": 14166298,
+    "name": "6: Gabbiolo - Villazzano - Piazza Dante - Vela",
+    "ref": "6",
+    "operator": "Trentino Trasporti",
+    "from": "Gabbiolo",
+    "to": "Vela",
+    "colour": "#70b442"
+  },
+  {
+    "id": 14166299,
+    "name": "6: Vela - Piazza Dante - Villazzano - Grotta",
+    "ref": "6",
+    "operator": "Trentino Trasporti",
+    "from": "Vela",
+    "to": "Grotta di Villazzano",
+    "colour": "#70b442"
+  },
+  {
+    "id": 14166300,
+    "name": "6: Grotta - Villazzano - Piazza Dante - Vela",
+    "ref": "6",
+    "operator": "Trentino Trasporti",
+    "from": "Grotta di Villazzano",
+    "to": "Vela",
+    "colour": "#70b442"
+  },
+  {
+    "id": 14181858,
+    "name": "A: Piazza Dante - Ospedale Santa Chiara - Clarina - Piazza Dante",
+    "ref": "A",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Piazza Dante",
+    "colour": "#babab7"
+  },
+  {
+    "id": 14191564,
+    "name": "19: Piazza Dante - Albere - Monte Baldo - Piazza Dante",
+    "ref": "19",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Piazza Dante",
+    "colour": "black"
+  },
+  {
+    "id": 14191644,
+    "name": "14: Belvedere - Ravina - Via Sanseverino - Piazza Dante",
+    "ref": "14",
+    "operator": "Trentino Trasporti",
+    "from": "Belvedere",
+    "to": "Piazza Dante",
+    "colour": "#E490B0"
+  },
+  {
+    "id": 14191645,
+    "name": "14: Piazza Dante - Muredei - Ravina - Belvedere",
+    "ref": "14",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Belvedere",
+    "colour": "#E490B0"
+  },
+  {
+    "id": 14194763,
+    "name": "6/: Sopramonte - Piazza Dante - San Rocco - Grotta",
+    "ref": "6/",
+    "operator": "Trentino Trasporti",
+    "from": "Sopramonte",
+    "to": "Grotta di Villazzano",
+    "colour": "#70b442"
+  },
+  {
+    "id": 14194764,
+    "name": "1/: Grotta - Piazza Dante - Cadine - Sopramonte",
+    "ref": "1/",
+    "operator": "Trentino Trasporti",
+    "from": "Grotta di Villazzano",
+    "to": "Sopramonte",
+    "colour": "#1D3F72"
+  },
+  {
+    "id": 14194765,
+    "name": "1/: Sopramonte - Baselga - Cadine - Piazza Dante",
+    "ref": "1/",
+    "operator": "Trentino Trasporti",
+    "from": "Sopramonte",
+    "to": "Piazza Dante",
+    "colour": "#1D3F72"
+  },
+  {
+    "id": 14194766,
+    "name": "1/: Sopramonte - Baselga - Cadine - Piazza Dante - Ospedale",
+    "ref": "1/",
+    "operator": "Trentino Trasporti",
+    "from": "Sopramonte",
+    "to": "Ospedale S.Chiara",
+    "colour": "#1D3F72"
+  },
+  {
+    "id": 14194767,
+    "name": "1: Sopramonte - Piazza Dante - Ospedale",
+    "ref": "1",
+    "operator": "Trentino Trasporti",
+    "from": "Sopramonte",
+    "to": "Ospedale S.Chiara",
+    "colour": "#1D3F72"
+  },
+  {
+    "id": 14194768,
+    "name": "1/: Piazza Dante - Cadine - Baselga - Sopramonte",
+    "ref": "1/",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Sopramonte",
+    "colour": "#1D3F72"
+  },
+  {
+    "id": 14194769,
+    "name": "1/: Ospedale - Piazza Dante - Cadine - Baselga - Sopramonte",
+    "ref": "1/",
+    "operator": "Trentino Trasporti",
+    "from": "Ospedale S.Chiara",
+    "to": "Sopramonte",
+    "colour": "#1D3F72"
+  },
+  {
+    "id": 14194770,
+    "name": "1: Ospedale - Piazza Dante - Sopramonte",
+    "ref": "1",
+    "operator": "Trentino Trasporti",
+    "from": "Ospedale S.Chiara",
+    "to": "Sopramonte",
+    "colour": "#1D3F72"
+  },
+  {
+    "id": 14197265,
+    "name": "12: Romagnano - Ravina - Via Sanseverino - Piazza Dante",
+    "ref": "12",
+    "operator": "Trentino Trasporti",
+    "from": "Romagnano",
+    "to": "Piazza Dante",
+    "colour": "#95293B"
+  },
+  {
+    "id": 14197266,
+    "name": "12: Romagnano - Ravina - Belvedere - Via Ghiaie - Piazza Dante",
+    "ref": "12",
+    "operator": "Trentino Trasporti",
+    "from": "Romagnano",
+    "to": "Piazza Dante",
+    "colour": "#95293B"
+  },
+  {
+    "id": 14197267,
+    "name": "12: Piazza Dante - Via Ghiaie - Ravina - Belvedere - Romagnano",
+    "ref": "12",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Romagnano",
+    "colour": "#95293B"
+  },
+  {
+    "id": 14197268,
+    "name": "12: Romagnano - Ravina - Via Ghiaie - Piazza Dante",
+    "ref": "12",
+    "operator": "Trentino Trasporti",
+    "from": "Romagnano",
+    "to": "Piazza Dante",
+    "colour": "#95293B"
+  },
+  {
+    "id": 14197269,
+    "name": "12: Piazza Dante - Via Ghiaie - Ravina - Romagnano",
+    "ref": "12",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Romagnano",
+    "colour": "#95293B"
+  },
+  {
+    "id": 16660784,
+    "name": "Navetta: Zuffo - Rosmini- Italcementi - Rosmini - Zuffo",
+    "ref": "N",
+    "operator": "Trentino Trasporti",
+    "from": "Parcheggio Zuffo",
+    "to": "Parcheggio Zuffo",
+    "colour": "black"
+  },
+  {
+    "id": 17717793,
+    "name": "",
+    "ref": "",
+    "operator": "",
+    "from": "",
+    "to": "",
+    "colour": ""
+  },
+  {
+    "id": 18038765,
+    "name": "17/: Piazza Dante - Via Bolzano - Lamar - Lavis",
+    "ref": "17/",
+    "operator": "Trentino Trasporti",
+    "from": "Piazza Dante",
+    "to": "Lavis",
+    "colour": "#1F9ACF"
+  },
+  {
+    "id": 18038766,
+    "name": "17/: Lavis - Via Brennero - Piazza Dante",
+    "ref": "17/",
+    "operator": "Trentino Trasporti",
+    "from": "Lavis",
+    "to": "Piazza Dante",
+    "colour": "#1F9ACF"
+  },
+  {
+    "id": 19102150,
+    "name": "Bus B205: Trento->Pietramurata->Arco-> Riva del Garda",
+    "ref": "B205",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Riva del Garda Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19103979,
+    "name": "Bus B205: Riva del Garda->Arco->Pietramurata->Arco->Trento",
+    "ref": "B205",
+    "operator": "Trentino Trasporti",
+    "from": "Riva del Garda Autostazione",
+    "to": "Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19107063,
+    "name": "Bus B205: Variante Besalga->Trento senza Cadine",
+    "ref": "B205",
+    "operator": "Trentino Trasporti",
+    "from": "Besalga",
+    "to": "Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19109495,
+    "name": "Bus B202: Viote->Vason->Vaneze->Candriai->Sardagna->Trento",
+    "ref": "B202",
+    "operator": "Trentino Trasporti",
+    "from": "Viote Parcheggio",
+    "to": "Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19109496,
+    "name": "Bus B202: Trento->Sardagna->Candriai->Vaneze->Vason->Viote",
+    "ref": "B202",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Viote Parcheggio",
+    "colour": ""
+  },
+  {
+    "id": 19137840,
+    "name": "Bus B204: Trento->Vezzano Apt->Vigo Cavedine-> Riva del Garda",
+    "ref": "B204",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Riva del Garda Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19138529,
+    "name": "Bus B204: Riva del Garda->Vigo Cavedine->Vezzano Apt->Trento",
+    "ref": "B204",
+    "operator": "Trentino Trasporti",
+    "from": "Riva del Garda Autostazione",
+    "to": "Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19141048,
+    "name": "Bus B204: Variante: Riva del Garda->Cadine->Trento (senza Cavedine)",
+    "ref": "B204",
+    "operator": "Trentino Trasporti",
+    "from": "Vigolo Baselga",
+    "to": "Trento Via Brescia",
+    "colour": ""
+  },
+  {
+    "id": 19141049,
+    "name": "Bus B204: Variante: Trento->Cadine-> Riva del Garda (senza Cavedine)",
+    "ref": "B204",
+    "operator": "Trentino Trasporti",
+    "from": "Trento via Brescia",
+    "to": "Vigolo Baselga",
+    "colour": ""
+  },
+  {
+    "id": 19236839,
+    "name": "Bus B205: Variante Trento->Baselga senza Cadine",
+    "ref": "B205",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Baselga",
+    "colour": ""
+  },
+  {
+    "id": 19266390,
+    "name": "Bus B230: Trento->Ciago->M.Terlago->Ranzo->Margone",
+    "ref": "B230",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostzione",
+    "to": "Margone",
+    "colour": ""
+  },
+  {
+    "id": 19267626,
+    "name": "Bus B230: Ranzo->Trento->M.Terlago->Ciago",
+    "ref": "B230",
+    "operator": "Trentino Trasporti",
+    "from": "Ranzo",
+    "to": "Trento Autostzione",
+    "colour": ""
+  },
+  {
+    "id": 19268524,
+    "name": "Bus B206: Variante: M.Terlago->Terlago->Sopramonte",
+    "ref": "B206",
+    "operator": "Trentino Trasporti",
+    "from": "M.Terlago Htl. 2 Lagi",
+    "to": "Sopramonte",
+    "colour": ""
+  },
+  {
+    "id": 19268525,
+    "name": "Bus B206: Variante: Sopramonte->Terlago->M.Terlago",
+    "ref": "B206",
+    "operator": "Trentino Trasporti",
+    "from": "Sopramente",
+    "to": "M.Terlago Htl. 2 Lagi",
+    "colour": ""
+  },
+  {
+    "id": 19268526,
+    "name": "Bus B206: Variante: M.Terlago->Terlago->Cadine->Trento",
+    "ref": "B206",
+    "operator": "Trentino Trasporti",
+    "from": "M.Terlago Htl. 2 Lagi",
+    "to": "Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19268527,
+    "name": "Bus B206: Variante: Trento->Cadine->Terlago->M.Terlago",
+    "ref": "B206",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "M.Terlago Htl. 2 Lagi",
+    "colour": ""
+  },
+  {
+    "id": 19268796,
+    "name": "Bus B311: Rovereto->Villa ->Nomo->Aldeno (Trento)",
+    "ref": "B311",
+    "operator": "Trentino Trasporti",
+    "from": "Rovereto Stazione FS",
+    "to": "Aldeno (Trento stazione)",
+    "colour": ""
+  },
+  {
+    "id": 19268797,
+    "name": "Bus B311: (Trento) Aldeno->Nomo->->Villa->Rovereto",
+    "ref": "B311",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Rovereto Stazione FS",
+    "colour": ""
+  },
+  {
+    "id": 19269573,
+    "name": "Bus B302: Trento->Ravine->Mattarello-->Aldeno->Garniga",
+    "ref": "B302",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Garniga vecchia",
+    "colour": ""
+  },
+  {
+    "id": 19270872,
+    "name": "Bus B302: Variante Aldeno->Mattarello->Trento",
+    "ref": "B302",
+    "operator": "Trentino Trasporti",
+    "from": "Aldeno",
+    "to": "Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19270873,
+    "name": "Bus B302: Variante Trento->Mattarello->Aldeno",
+    "ref": "B302",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Aldeno",
+    "colour": ""
+  },
+  {
+    "id": 19270874,
+    "name": "Bus B302: Garniga Terme>Aldeno->Mattarello->Ravina",
+    "ref": "B302",
+    "operator": "Trentino Trasporti",
+    "from": "Garniga Terme",
+    "to": "Trento Aitostzione",
+    "colour": ""
+  },
+  {
+    "id": 19271847,
+    "name": "Bus B301: Rovereto->Calliano->Besenello->Trento",
+    "ref": "B301",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Trento Autostzione",
+    "colour": ""
+  },
+  {
+    "id": 19271848,
+    "name": "Bus B301: Trento->Besenello->Calliano->Rovereto",
+    "ref": "B301",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Rovereto Via Manzoni",
+    "colour": ""
+  },
+  {
+    "id": 19324042,
+    "name": "Bus B201: Tione->Sarche->Vazzano->Trento diretto",
+    "ref": "B201",
+    "operator": "Trentino Trasporti",
+    "from": "Tione Autostazione",
+    "to": "Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19324043,
+    "name": "Bus B201: Variante Trento->Vignole->Vazzano->Sarche",
+    "ref": "B201",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Sarche Cassa Rurale",
+    "colour": ""
+  },
+  {
+    "id": 19324269,
+    "name": "Bus B201: Variante Sarche->Vazzano->Vignole->Trento",
+    "ref": "B201",
+    "operator": "Trentino Trasporti",
+    "from": "Sarche Centro Comerciale",
+    "to": "Trento Autostzione",
+    "colour": ""
+  },
+  {
+    "id": 19324270,
+    "name": "Bus B201: Trento->Vignole->Vazzano->Sarche diretto",
+    "ref": "B201",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Tione Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19347277,
+    "name": "Bus B611:Variante: Mezzolombardo->Mezzocorona->Trento",
+    "ref": "B611",
+    "operator": "Trentino Trasporti",
+    "from": "Mezzolombardo",
+    "to": "Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19347278,
+    "name": "Bus B611:Variante: Trento->Mezzocorona->Mezzolombardo",
+    "ref": "B611",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Mezzolombardo",
+    "colour": ""
+  },
+  {
+    "id": 19348840,
+    "name": "Bus B621: Variante: Lavis->Trento",
+    "ref": "B621",
+    "operator": "Trentino Trasporti",
+    "from": "Lavis (Mezzolombardo)",
+    "to": "Trento",
+    "colour": ""
+  },
+  {
+    "id": 19348841,
+    "name": "Bus B621: Variante: Trento->Lavis",
+    "ref": "B621",
+    "operator": "Trentino Trasporti",
+    "from": "Trento",
+    "to": "Lavis (Mezzolombardo)",
+    "colour": ""
+  },
+  {
+    "id": 19349186,
+    "name": "Bus B601: Trento->Dermulo->Cles->Male",
+    "ref": "B601",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Male",
+    "colour": ""
+  },
+  {
+    "id": 19349662,
+    "name": "Bus B601: Male->Cles->Dermulo->Trento",
+    "ref": "B601",
+    "operator": "Trentino Trasporti",
+    "from": "Male",
+    "to": "Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19357494,
+    "name": "Bus B104: Cavalese->Ora->Egna->S.Michele->Trento",
+    "ref": "B104",
+    "operator": "Trentino Trasporti",
+    "from": "San Michele",
+    "to": "Sz. Michele Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19357495,
+    "name": "Bus B104: Trento->S.Michele->Egna->Ora->Cavalese",
+    "ref": "B104",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "San Michele",
+    "colour": ""
+  },
+  {
+    "id": 19386406,
+    "name": "Bus B402: Trento->Rovarè->Baselgo di Pinè->Montesover",
+    "ref": "B402",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Montesover",
+    "colour": ""
+  },
+  {
+    "id": 19395827,
+    "name": "Bus B402: Montesover->Baselgo di Pinè->Rovarè->Trento",
+    "ref": "B402",
+    "operator": "Trentino Trasporti",
+    "from": "Montesover",
+    "to": "Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19411492,
+    "name": "Bus B303: Trento->V.Catara->Carbonare->Lavorne->Luserna",
+    "ref": "B303",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Luserna",
+    "colour": ""
+  },
+  {
+    "id": 19411675,
+    "name": "Bus B303: Luserna->Lavarone->Carbnonare->V.Catara->Trento",
+    "ref": "B303",
+    "operator": "Trentino Trasporti",
+    "from": "Lusern",
+    "to": "Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19412352,
+    "name": "Bus B401: Borgo V.->Levico->Pergine V.->Trento",
+    "ref": "B401",
+    "operator": "Trentino Trasporti",
+    "from": "Borgo Valsugana",
+    "to": "Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19412353,
+    "name": "Bus B401: Trento->Pergine V.->Levico T.->Borgo V.",
+    "ref": "B401",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Borgo Val Sugana",
+    "colour": ""
+  },
+  {
+    "id": 19414081,
+    "name": "Bus B403: Trento->Pergine->Baselga di Pinè->Montesover",
+    "ref": "B403",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Montesover",
+    "colour": ""
+  },
+  {
+    "id": 19414190,
+    "name": "Bus B403: Montesover->Baselga di Pinè->Pergine->Trento",
+    "ref": "B403",
+    "operator": "Trentino Trasporti",
+    "from": "Montesover",
+    "to": "Trento Aitostzione",
+    "colour": ""
+  },
+  {
+    "id": 19414519,
+    "name": "Bus B403: Variante: Trento Autostazione->Port Aquilla per Ospedale Santa Chiara &San Camillo",
+    "ref": "B403",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Port Aquilla",
+    "colour": ""
+  },
+  {
+    "id": 19414520,
+    "name": "Bus B403: Variante: Port Aquilla->Autostazione per Ospedale Santa Chiara",
+    "ref": "B403",
+    "operator": "Trentino Trasporti",
+    "from": "Port Aquilla",
+    "to": "Trento Aitostzione",
+    "colour": ""
+  },
+  {
+    "id": 19415401,
+    "name": "Bus B116: Bosco->S.Agnese->Civezzano->Trento",
+    "ref": "B116",
+    "operator": "Trentino Trasporti",
+    "from": "Bosco di Civezzano",
+    "to": "Trento Autostazione",
+    "colour": ""
+  },
+  {
+    "id": 19415402,
+    "name": "Bus B116: Trento->Civezzano->S.Agnese->Bosco",
+    "ref": "B116",
+    "operator": "Trentino Trasporti",
+    "from": "Trento Autostazione",
+    "to": "Bosco di Civezzano",
+    "colour": ""
+  }
+]

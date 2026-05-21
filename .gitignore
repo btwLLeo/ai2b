@@ -1,3 +1,4 @@
 .vvenv
 .env
 .DS_*
+venv/
