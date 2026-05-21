@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Geospatial Map</title>
+
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet">
+  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial;
+    }
+
+    #map {
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .status-box {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    .toggle {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      z-index: 1000;
+      background: white;
+      padding: 8px;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      display: flex;
+      gap: 8px;
+    }
+
+    .toggle button {
+      border: none;
+      padding: 6px 10px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .toggle .active {
+      background: #2563eb;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <div id="status" class="status-box">Loading...</div>
+
+  <div class="toggle">
+    <button id="carBtn" class="active">🚗 Car</button>
+    <button id="busBtn">🚌 Bus</button>
+  </div>
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    const MAPBOX_TOKEN = {{ mapbox_token|tojson }};
+    const CENTER = [11.126958, 46.020998];
+
+    let map;
+    let isMapbox = false;
+    let busMarkers = [];
+    let routeLine = null;
+    let parkingMarkers = [];
+    let mode = "car";
+
+    const statusBox = document.getElementById("status");
+
+    const carBtn = document.getElementById("carBtn");
+    const busBtn = document.getElementById("busBtn");
+
+    carBtn.onclick = () => setMode("car");
+    busBtn.onclick = () => setMode("bus");
+
+    function setMode(nextMode) {
+      mode = nextMode;
+      carBtn.classList.toggle("active", mode === "car");
+      busBtn.classList.toggle("active", mode === "bus");
+      clearAll();
+      setStatus(`Mode: ${mode.toUpperCase()}`);
+    }
+
+    function getEventIdFromUrl() {
+      return new URLSearchParams(window.location.search).get("event_id");
+    }
+
+    function setEventIdInUrl(id) {
+      const url = new URL(window.location);
+      url.searchParams.set("event_id", id);
+      history.replaceState({}, "", url);
+    }
+
+    function clearEventFromUrl() {
+      const url = new URL(window.location);
+      url.searchParams.delete("event_id");
+      history.replaceState({}, "", url);
+    }
+
+    function setStatus(msg) {
+      statusBox.innerText = msg;
+    }
+
+    function clearBusStops() {
+      busMarkers.forEach(m => isMapbox ? m.remove() : map.removeLayer(m));
+      busMarkers = [];
+    }
+
+    function clearParking() {
+      parkingMarkers.forEach(m => isMapbox ? m.remove() : map.removeLayer(m));
+      parkingMarkers = [];
+    }
+
+    function clearAll() {
+      clearBusStops();
+      clearParking();
+      clearRoute();
+    }
+
+    function escapeHtml(v) {
+      return String(v ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+    }
+
+    function haversine(lat1, lon1, lat2, lon2) {
+      const R = 6371000;
+      const toRad = d => d * Math.PI / 180;
+
+      const dLat = toRad(lat2 - lat1);
+      const dLon = toRad(lon2 - lon1);
+
+      const a =
+        Math.sin(dLat / 2) ** 2 +
+        Math.cos(toRad(lat1)) *
+        Math.cos(toRad(lat2)) *
+        Math.sin(dLon / 2) ** 2;
+
+      return 2 * R * Math.asin(Math.sqrt(a));
+    }
+
+    async function getWalkingRoute(lat1, lon1, lat2, lon2) {
+      try {
+        const url =
+          `https://router.project-osrm.org/route/v1/foot/` +
+          `${lon1},${lat1};${lon2},${lat2}?overview=full&geometries=geojson`;
+
+        const res = await fetch(url);
+        if (!res.ok) return null;
+
+        const data = await res.json();
+        const route = data?.routes?.[0];
+        if (!route) return null;
+
+        const distance = route.distance;
+        const geometry = route.geometry?.coordinates;
+
+        if (!Array.isArray(geometry) || geometry.length < 2) return null;
+        if (!isFinite(distance) || distance <= 0) return null;
+
+        const direct = haversine(lat1, lon1, lat2, lon2);
+        if (distance > direct * 8) return null;
+
+        return { distance, geometry };
+      } catch {
+        return null;
+      }
+    }
+
+    async function getDrivingRoute(lat1, lon1, lat2, lon2) {
+      try {
+        const url =
+          `https://router.project-osrm.org/route/v1/driving/` +
+          `${lon1},${lat1};${lon2},${lat2}?overview=full&geometries=geojson`;
+
+        const res = await fetch(url);
+        if (!res.ok) return null;
+
+        const data = await res.json();
+        const route = data?.routes?.[0];
+        if (!route) return null;
+
+        const distance = route.distance;
+        const geometry = route.geometry?.coordinates;
+
+        if (!Array.isArray(geometry) || geometry.length < 2) return null;
+        if (!isFinite(distance) || distance <= 0) return null;
+
+        const direct = haversine(lat1, lon1, lat2, lon2);
+        if (distance > direct * 8) return null;
+
+        return { distance, geometry };
+      } catch {
+        return null;
+      }
+    }
+
+    function clearRoute() {
+      if (!routeLine) return;
+
+      if (isMapbox) {
+        if (map.getSource("route")) {
+          map.removeLayer("route");
+          map.removeSource("route");
+        }
+      } else {
+        map.removeLayer(routeLine);
+      }
+
+      routeLine = null;
+    }
+
+    function drawRoute(coords) {
+      clearRoute();
+
+      if (isMapbox) {
+        map.addSource("route", {
+          type: "geojson",
+          data: {
+            type: "Feature",
+            geometry: { type: "LineString", coordinates: coords }
+          }
+        });
+
+        map.addLayer({
+          id: "route",
+          type: "line",
+          source: "route",
+          paint: {
+            "line-color": "#2563eb",
+            "line-width": 4
+          }
+        });
+      } else {
+        routeLine = L.polyline(
+          coords.map(c => [c[1], c[0]]),
+          { color: "#2563eb", weight: 4 }
+        ).addTo(map);
+      }
+    }
+
+    function popup(feature) {
+      const p = feature.properties || {};
+      const dist = p.walkingDistance
+        ? `🚶 ${p.walkingDistance.toFixed(0)} m walk`
+        : "";
+
+      return `
+        <b>${escapeHtml(p.name || p.title)}</b><br>
+        ${dist}<br>
+        ${(p.lines || []).map(l => l.ref || l.name).join(", ")}
+      `;
+    }
+
+    async function loadBusStops(lat, lon) {
+      clearRoute();
+      clearBusStops();
+
+      let radius = 500;
+      let data = null;
+
+      while (radius <= 2500) {
+        const res = await fetch(`/api/nearby_bus_stops?lat=${lat}&lon=${lon}&radius=${radius}`);
+        data = await res.json();
+        if (data?.features?.length) break;
+        radius += 200;
+      }
+
+      if (!data?.features?.length) {
+        setStatus("No bus stops found");
+        return;
+      }
+
+      const results = await Promise.all(
+        data.features.map(async f => {
+          const [slon, slat] = f.geometry.coordinates;
+          const route = await getWalkingRoute(lat, lon, slat, slon);
+          const fallback = haversine(lat, lon, slat, slon);
+
+          return {
+            feature: f,
+            distance: route?.distance ?? fallback,
+            geometry: route?.geometry ?? null
+          };
+        })
+      );
+
+      const valid = results.filter(r => r.distance > 0);
+      if (!valid.length) {
+        setStatus("No walkable routes found");
+        return;
+      }
+
+      valid.sort((a, b) => a.distance - b.distance);
+      const best = valid[0];
+
+      for (const r of valid) {
+        const f = r.feature;
+        const [slon, slat] = f.geometry.coordinates;
+        f.properties.walkingDistance = r.distance;
+
+        const html = popup(f);
+
+        if (isMapbox) {
+          const m = new mapboxgl.Marker({ color: "#2563eb" })
+            .setLngLat([slon, slat])
+            .setPopup(new mapboxgl.Popup().setHTML(html))
+            .addTo(map);
+
+          busMarkers.push(m);
+        } else {
+          const m = L.circleMarker([slat, slon], {
+            radius: 6,
+            color: "#2563eb",
+            fillOpacity: 0.9
+          }).addTo(map);
+
+          m.bindPopup(html);
+          busMarkers.push(m);
+        }
+      }
+
+      if (best?.geometry) {
+        drawRoute(best.geometry);
+      }
+
+      setStatus(`Closest stop: ${best.distance.toFixed(0)} m walking (${valid.length} checked)`);
+    }
+
+    async function loadParking(lat, lon) {
+      clearParking();
+      clearRoute();
+
+      const res = await fetch(`/api/nearby_parking?lat=${lat}&lon=${lon}&radius=2500`);
+      const data = await res.json();
+
+      if (!data?.features?.length) {
+        setStatus("No parking found");
+        return;
+      }
+
+      const scored = await Promise.all(
+        data.features.map(async f => {
+          const [plon, plat] = f.geometry.coordinates;
+          const route = await getDrivingRoute(lat, lon, plat, plon);
+          const direct = haversine(lat, lon, plat, plon);
+
+          return {
+            feature: f,
+            distance: route?.distance ?? direct,
+            geometry: route?.geometry ?? null
+          };
+        })
+      );
+
+      const valid = scored.filter(r => r.distance > 0);
+      if (!valid.length) {
+        setStatus("No driveable parking routes found");
+        return;
+      }
+
+      valid.sort((a, b) => a.distance - b.distance);
+      const best = valid[0];
+
+      for (const r of valid) {
+        const f = r.feature;
+        const [plon, plat] = f.geometry.coordinates;
+
+        const html = `
+          <b>${escapeHtml(f.properties.name || "Parking")}</b><br>
+          🚗 ${Math.round(r.distance)} m drive<br>
+          ${f.properties.capacity ? `Capacity: ${escapeHtml(f.properties.capacity)}<br>` : ""}
+          ${f.properties.fee ? `Fee: ${escapeHtml(f.properties.fee)}<br>` : ""}
+          ${f.properties.parking_type ? `Type: ${escapeHtml(f.properties.parking_type)}<br>` : ""}
+        `;
+
+        if (isMapbox) {
+          const m = new mapboxgl.Marker({ color: "#f59e0b" })
+            .setLngLat([plon, plat])
+            .setPopup(new mapboxgl.Popup().setHTML(html))
+            .addTo(map);
+          parkingMarkers.push(m);
+        } else {
+          const m = L.circleMarker([plat, plon], {
+            radius: 6,
+            color: "#f59e0b",
+            fillColor: "#f59e0b",
+            fillOpacity: 0.95
+          }).addTo(map);
+          m.bindPopup(html);
+          parkingMarkers.push(m);
+        }
+      }
+
+      if (best?.geometry) {
+        drawRoute(best.geometry);
+      }
+
+      setStatus(`Closest parking: ${Math.round(best.distance)} m driving (${valid.length} checked)`);
+    }
+
+    function onMapClick() {
+      clearEventFromUrl();
+      clearAll();
+
+      if (map) {
+        if (isMapbox) {
+          map.flyTo({ center: CENTER, zoom: 13, speed: 1.1, essential: true });
+        } else {
+          map.setView([CENTER[1], CENTER[0]], 13);
+        }
+      }
+    }
+
+    function focus(lat, lon, zoom = 16.5) {
+      if (isMapbox) {
+        map.flyTo({ center: [lon, lat], zoom, speed: 1.2 });
+      } else {
+        map.setView([lat, lon], zoom);
+      }
+    }
+
+    async function onEventClick(feature) {
+      const [lon, lat] = feature.geometry.coordinates;
+      setEventIdInUrl(feature.properties.id);
+
+      clearAll();
+      focus(lat, lon);
+
+      if (mode === "car") {
+        await loadParking(lat, lon);
+      } else {
+        await loadBusStops(lat, lon);
+      }
+    }
+
+    function initMapbox() {
+      if (!MAPBOX_TOKEN || !window.mapboxgl) return false;
+
+      isMapbox = true;
+      mapboxgl.accessToken = MAPBOX_TOKEN;
+
+      map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/streets-v12",
+        center: CENTER,
+        zoom: 13
+      });
+
+      map.on("click", onMapClick);
+
+      map.on("load", async () => {
+        const res = await fetch("/api/map_data");
+        const data = await res.json();
+
+        const id = getEventIdFromUrl();
+        let initial = null;
+
+        data.features.forEach(f => {
+          const [lon, lat] = f.geometry.coordinates;
+
+          const m = new mapboxgl.Marker({ color: "#e11d48" })
+            .setLngLat([lon, lat])
+            .setPopup(new mapboxgl.Popup().setText(f.properties.title))
+            .addTo(map);
+
+          m.getElement().addEventListener("click", () => onEventClick(f));
+
+          if (String(f.properties.id) === String(id)) {
+            initial = f;
+          }
+        });
+
+        if (initial) {
+          const [lon, lat] = initial.geometry.coordinates;
+          focus(lat, lon);
+          if (mode === "car") {
+            await loadParking(lat, lon);
+          } else {
+            await loadBusStops(lat, lon);
+          }
+        }
+      });
+
+      return true;
+    }
+
+    async function initLeaflet() {
+      isMapbox = false;
+
+      map = L.map("map").setView([CENTER[1], CENTER[0]], 13);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19
+      }).addTo(map);
+
+      map.on("click", onMapClick);
+
+      const res = await fetch("/api/map_data");
+      const data = await res.json();
+
+      const id = getEventIdFromUrl();
+      let initial = null;
+
+      data.features.forEach(f => {
+        const [lon, lat] = f.geometry.coordinates;
+
+        const m = L.circleMarker([lat, lon], {
+          radius: 7,
+          color: "#e11d48"
+        }).addTo(map);
+
+        m.bindPopup(f.properties.title);
+        m.on("click", () => onEventClick(f));
+
+        if (String(f.properties.id) === String(id)) {
+          initial = f;
+        }
+      });
+
+      if (initial) {
+        const [lon, lat] = initial.geometry.coordinates;
+        focus(lat, lon);
+        if (mode === "car") {
+          await loadParking(lat, lon);
+        } else {
+          await loadBusStops(lat, lon);
+        }
+      }
+    }
+
+    if (!initMapbox()) {
+      initLeaflet();
+    }
+  </script>
+</body>
+</html>
