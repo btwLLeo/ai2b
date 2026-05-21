@@ -36,7 +36,7 @@ def main():
     print("="*70)
     print("Starting server...\n")
     
-    os.chdir("c:\\Users\\matta\\Desktop\\dati_eventi")
+    # os.chdir("c:\\Users\\matta\\Desktop\\dati_eventi")
     subprocess.run([sys.executable, "api_server.py"])
 
 if __name__ == "__main__":
