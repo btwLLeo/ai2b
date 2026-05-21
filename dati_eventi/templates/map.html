@@ -484,7 +484,7 @@
       clearParking();
       clearRoute();
 
-      const res = await fetch(`/api/nearby_parking?lat=${lat}&lon=${lon}&radius=2500`);
+      const res = await fetch(`/api/nearby_parking?lat=${lat}&lon=${lon}&radius=300`);
       const data = await res.json();
 
       if (!data?.features?.length) {

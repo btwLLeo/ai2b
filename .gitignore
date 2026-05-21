@@ -2,3 +2,6 @@
 .env
 .DS_*
 venv/
+_pycache_/
+__pycache__/
+qdrant_data*
