@@ -33,3 +33,4 @@ typing_extensions
 typing-inspection 
 urllib3           
 Werkzeug       
+sentence-transformers
