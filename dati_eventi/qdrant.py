@@ -413,7 +413,7 @@ Risposta:"""
     return system_prompt
 
 # --- TESTIAMO IL SISTEMA ---
-domanda = "Voglio portare mio figlio ad un mercato contadino questo weekend. Vengo in macchina, c'è parcheggio?"
+domanda = "Posso morire?"
 prompt_finale = gestisci_richiesta_utente(domanda)
 
 print("\n================== PROMPT PER LLM ==================")
